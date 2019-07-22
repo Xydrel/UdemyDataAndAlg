@@ -38,9 +38,9 @@ public:
 	Card() {}
 	Card(FaceValue fv, Shape sh, CardColor cc) : _face(fv), _shape(sh), _color(cc) {}
 
-	const FaceValue& GetCardFaceValue() { return _face; }
-	const Shape& GetCardShape() { return _shape; }
-	const CardColor& GetCardColor() { return _color; }
+	const FaceValue* GetCardFaceValue() { return &_face; }
+	const Shape* GetCardShape() { return &_shape; }
+	const CardColor* GetCardColor() { return &_color; }
 
 private:
 	FaceValue _face;
