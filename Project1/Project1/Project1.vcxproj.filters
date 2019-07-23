@@ -16,6 +16,9 @@
     <Filter Include="Source Files\ApplicationMain">
       <UniqueIdentifier>{8f762657-4ade-46d4-9969-5ce179ae73ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{f7a99b17-6e3c-412c-ad80-309934e778c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -31,6 +34,9 @@
     </ClInclude>
     <ClInclude Include="Includes.h">
       <Filter>Source Files\ApplicationMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Arithmatic.h">
+      <Filter>Header Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

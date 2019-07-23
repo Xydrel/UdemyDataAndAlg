@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />
+    <ClInclude Include="Arithmatic.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Includes.h" />
   </ItemGroup>
