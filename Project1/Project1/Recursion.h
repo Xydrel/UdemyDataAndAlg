@@ -11,7 +11,10 @@ void AscendDecendRecurse(std::vector<int>* a,
 void CallingRecursePrint(int n);
 void ReturningRecursePrint(int n);
 void TreeRecursionPrint(int n, int& functCallCnt);
-void IndirectRecursionPrint(int n);
+void IndirectARecursionPrint(int n);
+void IndirectBRecursionPrint(int n);
+int NestedRecursionPrint(int n);
+int RecursiveSum(int n);
 
 
 namespace recursiontesting
@@ -59,6 +62,32 @@ void Test_TreeRecursionPrint()
 	printf("\nfunct call cnt = %d\n", functCallCnt);
 }
 
+void Test_IndirectRecursion()
+{
+	int num = 20;
+	printf("\nStating indirect recursion test with value %d\n", num);
+	IndirectARecursionPrint(num);
+	printf("\n");
+}
+
+void Test_NestedRecursion()
+{
+	int num = 95;
+	printf("\nStating nested recursion test with value %d\n", num);
+	int res = NestedRecursionPrint(num);
+	printf("Result of the nested function recursive call with %d = %d\n", num, res);
+	printf("\n");
+}
+
+void Test_RecursiveSum()
+{
+	int num = 7;
+	printf("\nStating recursive sum test with value %d\n", num);
+	int res = RecursiveSum(num);
+	printf("Result of the recursive sum function call with %d = %d\n", num, res);
+	printf("\n");
+}
+
 } // end namespace recursiontesting
 
 void AscendDecendRecurse(std::vector<int>* a, 
@@ -102,8 +131,39 @@ inline void TreeRecursionPrint(int n, int& functCallCnt)
 	}
 }
 
-inline void IndirectRecursionPrint(int n)
+inline void IndirectARecursionPrint(int n)
 {
+	if (n > 0)
+	{
+		printf("%d ", n);
+		IndirectBRecursionPrint(n - 1);
+	}
 }
 
+inline void IndirectBRecursionPrint(int n)
+{
+	if (n > 1)
+	{
+		printf("%d ", n);
+		IndirectARecursionPrint(n / 2);
+	}
+}
+
+inline int NestedRecursionPrint(int n)
+{
+	if (n > 100)
+	{
+		return n - 10;
+	}
+	return NestedRecursionPrint(NestedRecursionPrint(n + 11));
+}
+
+inline int RecursiveSum(int n)
+{
+	if (n == 0)
+	{
+		return 0;
+	}
+	return RecursiveSum(n - 1) + n;
+}
 

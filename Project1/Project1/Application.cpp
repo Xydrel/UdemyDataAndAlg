@@ -64,4 +64,7 @@ void Run_RecursionTests()
 	recursiontesting::Test_AscDesc();
 	recursiontesting::Test_CallingPrint();
 	recursiontesting::Test_TreeRecursionPrint();
+	recursiontesting::Test_IndirectRecursion();
+	recursiontesting::Test_NestedRecursion();
+	recursiontesting::Test_RecursiveSum();
 }
