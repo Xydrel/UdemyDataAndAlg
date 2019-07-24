@@ -10,6 +10,7 @@ void AscendDecendRecurse(std::vector<int>* a,
 	const int val);
 void CallingRecursePrint(int n);
 void ReturningRecursePrint(int n);
+void TreeRecursionPrint(int n, int& functCallCnt);
 
 
 namespace recursiontesting
@@ -44,8 +45,18 @@ void Test_CallingPrint()
 	printf("\nTesting printing in recursion calling\n");
 	CallingRecursePrint(loopCnt);
 	printf("\n");
+	ReturningRecursePrint(loopCnt);
+	printf("\n");
 }
 
+void Test_TreeRecursionPrint()
+{
+	int cnt = 3;
+	printf("\ndepth count = %d\n", cnt);
+	int functCallCnt = 0;
+	TreeRecursionPrint(cnt, functCallCnt);
+	printf("\nfunct call cnt = %d\n", functCallCnt);
+}
 
 } // end namespace recursiontesting
 
@@ -76,6 +87,17 @@ inline void ReturningRecursePrint(int n)
 	{
 		ReturningRecursePrint(n - 1);
 		printf("%d ", n);
+	}
+}
+
+inline void TreeRecursionPrint(int n, int& functCallCnt)
+{
+	functCallCnt++;
+	if (n > 0)
+	{
+		printf("%d ", n);
+		TreeRecursionPrint(n - 1, functCallCnt);
+		TreeRecursionPrint(n - 1, functCallCnt);
 	}
 }
 

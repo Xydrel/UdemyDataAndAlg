@@ -50,7 +50,10 @@ void Run_ArithmeticTests()
 	arithtests::TestPrimeNumbers(primesToTest);
 	arithtests::TestAdd(4, 2);
 	arithtests::TestSub(4, 2);
-
+	
+	// 24
+	arithtests::TestFactorialsPrint(4);
+	
 	// add more as needed
 }
 
@@ -58,4 +61,5 @@ void Run_RecursionTests()
 {
 	recursiontesting::Test_AscDesc();
 	recursiontesting::Test_CallingPrint();
+	recursiontesting::Test_TreeRecursionPrint();
 }

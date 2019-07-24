@@ -16,6 +16,7 @@ public:
 	T Sub(const T& lft, const T& rt);
 
 	bool IsPrime(const T val);
+	T Factorials(T nFactorials);
 
 private:
 	T _a;
@@ -79,6 +80,17 @@ bool Arithmatic<T>::IsPrime(const T val)
 	return true;
 }
 
+template<class T>
+T Arithmatic<T>::Factorials(T nFactorials)
+{
+	if (nFactorials > 1)
+	{
+		return nFactorials * Factorials(nFactorials - 1);
+	}
+
+	return 1;
+}
+
 namespace arithtests
 {
 
@@ -134,6 +146,14 @@ void TestSub(const T lft, const T rt)
 	Arithmatic<T> ar;
 	T diff = ar.Sub(lft, rt);
 	printf("The diff of %d - %d = %d\n", lft, rt, diff);
+}
+
+template<class T>
+void TestFactorialsPrint(const T n)
+{
+	Arithmatic<T> ar;
+	T res = ar.Factorials(n);
+	printf("result of %d! =  %d\n", n, res);
 }
 
 }
