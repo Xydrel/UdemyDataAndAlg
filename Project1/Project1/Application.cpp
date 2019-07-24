@@ -6,8 +6,8 @@
 
 #include "Includes.h"
 
-static const bool bShouldTestArith = false;
-static const bool bShouldTestRecursion = true;
+static const bool bShouldTestArith = true;
+static const bool bShouldTestRecursion = false;
 
 void Run_EnabledTests();
 
@@ -51,10 +51,8 @@ void Run_ArithmeticTests()
 	arithtests::TestAdd(4, 2);
 	arithtests::TestSub(4, 2);
 	
-	// expected: 24
-	arithtests::TestFactorialsPrint(4);
-	// expected: 16
-	arithtests::TestPowerOf(2, 4);
+	arithtests::TestFactorialPrint(4);
+	arithtests::TestPowerOf(3,3);
 	
 	// add more as needed
 }

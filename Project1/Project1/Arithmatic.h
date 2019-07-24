@@ -16,7 +16,7 @@ public:
 	T Sub(const T& lft, const T& rt);
 
 	bool IsPrime(const T val);
-	T Factorials(T nFactorials);
+	T Factorial(T n);
 	T PowerOf(T n, T power);
 
 private:
@@ -82,26 +82,24 @@ bool Arithmatic<T>::IsPrime(const T val)
 }
 
 template<class T>
-T Arithmatic<T>::Factorials(T nFactorials)
+T Arithmatic<T>::Factorial(T n)
 {
-	if (nFactorials > 1)
+	if(n == 0)
 	{
-		return nFactorials * Factorials(nFactorials - 1);
+		return 1;
 	}
-
-	return 1;
+	return Factorial(n - 1) * n;
+		
 }
 
 template<class T>
 inline T Arithmatic<T>::PowerOf(T n, T power)
 {
-	int res = 1;
-	if (power >= 0)
+	if(power == 0)
 	{
-		res = PowerOf(n, power-1) * n;
+		return 1;
 	}
-
-	return res;
+	return PowerOf(n, power - 1)*n;
 }
 
 namespace arithtests
@@ -162,10 +160,10 @@ void TestSub(const T lft, const T rt)
 }
 
 template<class T>
-void TestFactorialsPrint(const T n)
+void TestFactorialPrint(const T n)
 {
 	Arithmatic<T> ar;
-	T res = ar.Factorials(n);
+	T res = ar.Factorial(n);
 	printf("result of %d! =  %d\n", n, res);
 }
 
