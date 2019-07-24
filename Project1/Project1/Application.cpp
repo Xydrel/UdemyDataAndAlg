@@ -6,13 +6,18 @@
 
 #include "Includes.h"
 
+static const bool bShouldTestArith = false;
+static const bool bShouldTestRecursion = true;
+
+void Run_EnabledTests();
+
+void Run_ArithmeticTests();
+void Run_RecursionTests();
+
 int main(void)
 {
-	int primesToTest = 500;
-	arithtests::TestPrimeNumbers(primesToTest);
-	arithtests::TestAdd(4, 2);
-	arithtests::TestSub(4, 2);
-
+	printf("Starting test runs...");
+	Run_EnabledTests();
 
 	printf("press any key to initiate exit... ");
 	// wait for the user to press a key
@@ -25,3 +30,32 @@ int main(void)
 	return 0;
 }
 
+void Run_EnabledTests()
+{
+	if (bShouldTestArith)
+	{
+		Run_ArithmeticTests();
+	}
+
+	if (bShouldTestRecursion)
+	{
+		Run_RecursionTests();
+	}
+
+}
+
+void Run_ArithmeticTests()
+{
+	int primesToTest = 500;
+	arithtests::TestPrimeNumbers(primesToTest);
+	arithtests::TestAdd(4, 2);
+	arithtests::TestSub(4, 2);
+
+	// add more as needed
+}
+
+void Run_RecursionTests()
+{
+	recursiontesting::Test_AscDesc();
+	recursiontesting::Test_CallingPrint();
+}

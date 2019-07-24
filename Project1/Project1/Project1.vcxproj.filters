@@ -38,5 +38,8 @@
     <ClInclude Include="Arithmatic.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Recursion.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
