@@ -17,6 +17,7 @@ public:
 
 	bool IsPrime(const T val);
 	T Factorial(T n);
+	T IterFactorial(T n);
 	T PowerOf(T n, T power);
 
 private:
@@ -93,6 +94,19 @@ T Arithmatic<T>::Factorial(T n)
 }
 
 template<class T>
+inline T Arithmatic<T>::IterFactorial(T n)
+{
+	T product = 1;
+	while (n > 0)
+	{
+		product *= n;
+		--n;
+	}
+
+	return product;
+}
+
+template<class T>
 inline T Arithmatic<T>::PowerOf(T n, T power)
 {
 	if(power == 0)
@@ -165,6 +179,8 @@ void TestFactorialPrint(const T n)
 	Arithmatic<T> ar;
 	T res = ar.Factorial(n);
 	printf("result of %d! =  %d\n", n, res);
+	T iterRes = ar.IterFactorial(n);
+	printf("result of iterative %d! =  %d\n", n, iterRes);
 }
 
 template<class T>

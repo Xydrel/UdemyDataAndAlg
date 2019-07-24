@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Math">
       <UniqueIdentifier>{f7a99b17-6e3c-412c-ad80-309934e778c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UnitTests">
+      <UniqueIdentifier>{ffe8d7d3-bc8b-4400-87f6-53aa25c49f2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -40,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="Recursion.h">
       <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitTests.h">
+      <Filter>Header Files\UnitTests</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
