@@ -51,8 +51,10 @@ void Run_ArithmeticTests()
 	arithtests::TestAdd(4, 2);
 	arithtests::TestSub(4, 2);
 	
-	// 24
+	// expected: 24
 	arithtests::TestFactorialsPrint(4);
+	// expected: 16
+	arithtests::TestPowerOf(2, 4);
 	
 	// add more as needed
 }

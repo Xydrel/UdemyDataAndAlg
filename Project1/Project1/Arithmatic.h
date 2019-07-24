@@ -17,6 +17,7 @@ public:
 
 	bool IsPrime(const T val);
 	T Factorials(T nFactorials);
+	T PowerOf(T n, T power);
 
 private:
 	T _a;
@@ -91,6 +92,18 @@ T Arithmatic<T>::Factorials(T nFactorials)
 	return 1;
 }
 
+template<class T>
+inline T Arithmatic<T>::PowerOf(T n, T power)
+{
+	int res = 1;
+	if (power >= 0)
+	{
+		res = PowerOf(n, power-1) * n;
+	}
+
+	return res;
+}
+
 namespace arithtests
 {
 
@@ -154,6 +167,14 @@ void TestFactorialsPrint(const T n)
 	Arithmatic<T> ar;
 	T res = ar.Factorials(n);
 	printf("result of %d! =  %d\n", n, res);
+}
+
+template<class T>
+void TestPowerOf(const T n, const T power)
+{
+	Arithmatic<T> ar;
+	T res = ar.PowerOf(n, power);
+	printf("%d to the power of %d = %d\n", n, power, res);
 }
 
 }

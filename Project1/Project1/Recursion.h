@@ -11,6 +11,7 @@ void AscendDecendRecurse(std::vector<int>* a,
 void CallingRecursePrint(int n);
 void ReturningRecursePrint(int n);
 void TreeRecursionPrint(int n, int& functCallCnt);
+void IndirectRecursionPrint(int n);
 
 
 namespace recursiontesting
@@ -99,6 +100,10 @@ inline void TreeRecursionPrint(int n, int& functCallCnt)
 		TreeRecursionPrint(n - 1, functCallCnt);
 		TreeRecursionPrint(n - 1, functCallCnt);
 	}
+}
+
+inline void IndirectRecursionPrint(int n)
+{
 }
 
 
