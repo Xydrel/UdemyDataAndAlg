@@ -19,6 +19,7 @@ public:
 	T Factorial(T n);
 	T IterFactorial(T n);
 	T PowerOf(T n, T power);
+	void NPrimes(T n, T i, std::vector<T>* primes);
 
 private:
 	T _a;
@@ -85,7 +86,7 @@ bool Arithmatic<T>::IsPrime(const T val)
 template<class T>
 T Arithmatic<T>::Factorial(T n)
 {
-	if(n == 0)
+	if(n <= 0)
 	{
 		return 1;
 	}
@@ -114,6 +115,26 @@ inline T Arithmatic<T>::PowerOf(T n, T power)
 		return 1;
 	}
 	return PowerOf(n, power - 1)*n;
+}
+
+// NOTE: This method is not actually being tested at this time.
+template<class T>
+inline void Arithmatic<T>::NPrimes(T n, T i, std::vector<T>* primes)
+{
+	if (primes->size() < n)
+	{
+		if (i > 0 && i == 1 || i == 2)
+		{
+			primes->push_back(i);
+		}		
+		else if (IsPrime(i))
+		{
+			primes->push_back(i);
+		}
+		NPrimes(n, i+1, primes);
+	}
+
+	return;
 }
 
 namespace arithtests
