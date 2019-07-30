@@ -252,9 +252,22 @@ inline uint64_t Arithmatic<T>::FibonacciSeriesIter(int n)
 template<class T>
 inline uint64_t Arithmatic<T>::FibonacciSeriesRecursive(int n)
 {
+	std::vector<int> arr(n, -1);
+
 	if (n <= 1)
 	{
 		return n;
+	}
+	else
+	{
+		if (arr[n - 2] == -1)
+		{
+			arr[n - 2] = FibonacciSeriesRecursive(n - 2);
+		}
+		if (arr[n - 1] == -1)
+		{
+			arr[n - 1] = FibonacciSeriesRecursive(n - 1);
+		}
 	}
 	return FibonacciSeriesRecursive(n-2) + FibonacciSeriesRecursive(n-1);
 }
