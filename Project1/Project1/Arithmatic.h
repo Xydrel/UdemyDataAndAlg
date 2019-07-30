@@ -25,6 +25,8 @@ public:
 	double TaylorSeriesRecursive(int x, int n);
 	double TaylorSeriesOrderNIterative(double x, double n);
 	double TaylorSeriesOrderNRecurse(double x, double n);
+	uint64_t FibonacciSeriesIter(int n);
+	uint64_t FibonacciSeriesRecursive(int n);
 
 	T FindSeatFromN(T base, T seatNum);
 
@@ -227,6 +229,37 @@ inline double Arithmatic<T>::TaylorSeriesOrderNRecurse(double x, double n)
 }
 
 template<class T>
+inline uint64_t Arithmatic<T>::FibonacciSeriesIter(int n)
+{
+	if (n <= 1)
+	{
+		return n;
+	}
+
+	uint64_t sum = 0;
+	uint64_t lastTerm = 1;
+	int i = 1;
+	for (; i <= n; i++)
+	{
+		uint64_t prevSum = sum;
+		sum = lastTerm + sum;
+		lastTerm = prevSum;
+	}
+
+	return sum;
+}
+
+template<class T>
+inline uint64_t Arithmatic<T>::FibonacciSeriesRecursive(int n)
+{
+	if (n <= 1)
+	{
+		return n;
+	}
+	return FibonacciSeriesRecursive(n-2) + FibonacciSeriesRecursive(n-1);
+}
+
+template<class T>
 inline T Arithmatic<T>::FindSeatFromN(T base, T seatNum)
 {
 	// explicit funct
@@ -360,6 +393,20 @@ void TestTaylorSeriesOrderNRecurse(const int x, const int n)
 	Arithmatic<double> ar;
 	double res = ar.TaylorSeriesOrderNRecurse(x, n);
 	printf("result of taylor series O(n) recursive calculation for x = %d and n = %d is %lf\n", x, n, res);
+}
+
+void TestFibanacciIter(const int n)
+{
+	Arithmatic<double> ar;
+	uint64_t res = ar.FibonacciSeriesIter(n);
+	printf("result Fibonacci series iterative to %d term = %llu\n", n, (unsigned long long)res);
+}
+
+void TestFibanacciRecurse(const int n)
+{
+	Arithmatic<double> ar;
+	uint64_t res = ar.FibonacciSeriesRecursive(n);
+	printf("result Fibonacci series recursive to %d term = %llu\n", n, (unsigned long long)res);
 }
 
 }

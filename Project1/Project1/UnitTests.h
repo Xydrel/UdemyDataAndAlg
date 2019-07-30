@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <string>
+
 #include "Includes.h"
 
 
@@ -56,6 +59,12 @@ void UnitTests::Run_ArithmeticTests()
 	arithtests::TestTaylorSeriesRecurs(4, 10);
 	arithtests::TestTaylorSeriesIter(4, 10);
 	arithtests::TestTaylorSeriesOrderNRecurse(4, 10);
+
+	std::string input;
+	printf("Enter a numeric term to calculate Fibonacci series to: ");
+	getline(std::cin, input);
+	arithtests::TestFibanacciIter(std::stoi(input));
+	arithtests::TestFibanacciRecurse(std::stoi(input));
 }
 
 void UnitTests::Run_RecursionTests()
