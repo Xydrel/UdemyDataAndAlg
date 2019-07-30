@@ -49,7 +49,13 @@ void UnitTests::Run_ArithmeticTests()
 	arithtests::TestSub(4, 2);
 
 	arithtests::TestFactorialPrint(5);
-	arithtests::TestPowerOf(3, 3);
+	arithtests::TestPowerOf(3,4);
+	arithtests::TestIterativePowerOf(3,4);
+	//arithtests::TestFindSeatCount(15, 117); // function is on hold for now
+	arithtests::TestRecursiveSum(5);
+	arithtests::TestTaylorSeriesRecurs(4, 10);
+	arithtests::TestTaylorSeriesIter(4, 10);
+	arithtests::TestTaylorSeriesOrderNRecurse(4, 10);
 }
 
 void UnitTests::Run_RecursionTests()

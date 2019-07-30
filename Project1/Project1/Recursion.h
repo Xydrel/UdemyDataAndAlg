@@ -81,7 +81,7 @@ void Test_NestedRecursion()
 
 void Test_RecursiveSum()
 {
-	int num = 7;
+	int num = 5;
 	printf("\nStating recursive sum test with value %d\n", num);
 	int res = RecursiveSum(num);
 	printf("Result of the recursive sum function call with %d = %d\n", num, res);

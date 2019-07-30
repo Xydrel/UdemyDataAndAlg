@@ -14,12 +14,19 @@ public:
 	T Add(const T& lft, const T& rt);
 	T Sub();
 	T Sub(const T& lft, const T& rt);
+	T Sum(const T n);
 
 	bool IsPrime(const T val);
 	T Factorial(T n);
 	T IterFactorial(T n);
-	T PowerOf(T n, T power);
+	T Pow(T n, T power);
+	T IterPow(T n, T power);
 	void NPrimes(T n, T i, std::vector<T>* primes);
+	double TaylorSeriesRecursive(int x, int n);
+	double TaylorSeriesOrderNIterative(double x, double n);
+	double TaylorSeriesOrderNRecurse(double x, double n);
+
+	T FindSeatFromN(T base, T seatNum);
 
 private:
 	T _a;
@@ -66,6 +73,16 @@ inline T Arithmatic<T>::Sub(const T& lft, const T& rt)
 }
 
 template<class T>
+inline T Arithmatic<T>::Sum(const T n)
+{
+	if (n > 0)
+	{
+		return Sum(n-1) + n;
+	}
+	return 0;
+}
+
+template<class T>
 bool Arithmatic<T>::IsPrime(const T val)
 {
 	// O(n) algorithm
@@ -108,13 +125,43 @@ inline T Arithmatic<T>::IterFactorial(T n)
 }
 
 template<class T>
-inline T Arithmatic<T>::PowerOf(T n, T power)
+inline T Arithmatic<T>::Pow(T n, T power)
 {
 	if(power == 0)
 	{
 		return 1;
 	}
-	return PowerOf(n, power - 1)*n;
+	if (power % 2 == 0)
+	{
+		return Pow(n*n, power / 2);
+	}
+	return n * Pow(n*n, (power - 1) / 2);
+}
+
+template<class T>
+inline T Arithmatic<T>::IterPow(T n, T power)
+{
+	if (power == 0)
+		return 1;
+
+	T result = 1;
+	while (power > 0)
+	{
+		result *= n;
+		--power;
+		/*if (power % 2 == 0)
+		{
+			result = result * result;
+			power /= 2;
+		}
+		else
+		{
+			result = result * result * n;
+			power = (power - 1) / 2;
+		}*/
+	}
+
+	return result;
 }
 
 // NOTE: This method is not actually being tested at this time.
@@ -135,6 +182,64 @@ inline void Arithmatic<T>::NPrimes(T n, T i, std::vector<T>* primes)
 	}
 
 	return;
+}
+
+inline double Arithmatic<double>::TaylorSeriesRecursive(int x, int n)
+{
+	static double p = 1, f = 1;
+	double res;
+	if (n == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		res = TaylorSeriesRecursive(x, n - 1);
+		p = p * x;
+		f = f * n;
+		return res + p / f;
+	}
+}
+
+template<class T>
+inline double Arithmatic<T>::TaylorSeriesOrderNIterative(double x, double n)
+{
+	double s = 1.0f;
+	for (; n > 0; n--)
+	{
+		//s = 1.0f + (((double)x / (double)n) * (double)s);
+		s = 1.0f + ((x / n) * s);
+	}
+
+	return s;
+}
+
+template<class T>
+inline double Arithmatic<T>::TaylorSeriesOrderNRecurse(double x, double n)
+{
+	static double s = 1.0f;
+	if (n > 0)
+	{
+		s = 1.0f + ((x / n) * s);
+		return TaylorSeriesOrderNRecurse(x, n - 1);
+	}
+	return s;
+}
+
+template<class T>
+inline T Arithmatic<T>::FindSeatFromN(T base, T seatNum)
+{
+	// explicit funct
+	// f(n) = base + 3(n-1);
+
+	// recursive function 
+	// f(1) = 15
+	// f(n) = f(n-1)+3
+
+	// if n = 35 result should be 117
+	
+
+	return 1;
 }
 
 namespace arithtests
@@ -208,8 +313,53 @@ template<class T>
 void TestPowerOf(const T n, const T power)
 {
 	Arithmatic<T> ar;
-	T res = ar.PowerOf(n, power);
+	T res = ar.Pow(n, power);
 	printf("%d to the power of %d = %d\n", n, power, res);
+}
+
+template<class T>
+void TestIterativePowerOf(const T n, const T power)
+{
+	Arithmatic<T> ar;
+	T res = ar.IterPow(n, power);
+	printf("%d to the power of %d = %d\n", n, power, res);
+}
+
+template<class T>
+void TestFindSeatCount(const T base, const T seatNum)
+{
+	Arithmatic<T> ar;
+	T seatCount = ar.FindSeatFromN(base, seatNum);
+	printf("Seat %d was %d from %d\n", seatNum, seatCount, base);
+}
+
+template<class T>
+void TestRecursiveSum(const T n)
+{
+	Arithmatic<T> ar;
+	T res = ar.Sum(n);
+	printf("result of summation to %d = %d\n", n, res);
+}
+
+void TestTaylorSeriesRecurs(const int x, const int n)
+{
+	Arithmatic<double> ar;
+	double res = ar.TaylorSeriesRecursive(x, n);
+	printf("result of taylor series calculation for x = %d and n = %d is %lf\n", x, n, res);
+}
+
+void TestTaylorSeriesIter(const int x, const int n)
+{
+	Arithmatic<double> ar;
+	double res = ar.TaylorSeriesOrderNIterative(x, n);
+	printf("result of taylor series O(n) iterative calculation for x = %d and n = %d is %lf\n", x, n, res);
+}
+
+void TestTaylorSeriesOrderNRecurse(const int x, const int n)
+{
+	Arithmatic<double> ar;
+	double res = ar.TaylorSeriesOrderNRecurse(x, n);
+	printf("result of taylor series O(n) recursive calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
 }
