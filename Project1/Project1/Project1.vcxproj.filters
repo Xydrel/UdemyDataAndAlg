@@ -36,6 +36,9 @@
     <ClCompile Include="2DShapes.cpp">
       <Filter>Header Files\PrimitiveShapes</Filter>
     </ClCompile>
+    <ClCompile Include="UnitTests.cpp">
+      <Filter>Header Files\UnitTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">

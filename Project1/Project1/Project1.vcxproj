@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClCompile Include="2DShapes.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="UnitTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />

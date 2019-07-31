@@ -10,7 +10,7 @@ void StartUnitTests();
 
 int main(void)
 {
-	printf("Starting test runs...");
+	printf("Starting test runs...\n");
 	StartUnitTests();
 
 	printf("press any key to initiate exit... ");
@@ -26,6 +26,6 @@ int main(void)
 
 void StartUnitTests()
 {
-	UnitTests ut;
-	ut.Run_EnabledTests();
+	utests::UnitTests ut;
+	ut.SetAndRunDesiredTests();
 }
