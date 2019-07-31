@@ -77,7 +77,7 @@ void UnitTests::Run_EnabledTests()
 
 	if (!AreAnyTestsEnabledForRun())
 	{
-		printf("\nNo tests were enabled for run...\n");
+		printf("No tests were enabled for run...\n");
 	}
 }
 
@@ -85,28 +85,33 @@ void UnitTests::Run_ArithmeticTests()
 {
 	printf("Enter a value for how many numbers to evaluate for prime: ");
 	int primesToTest = GetUserInputIntFromConsole();
-	arithtests::Test_PrimeNumbers(primesToTest);
-	arithtests::Test_Add(4, 2);
-	arithtests::Test_Sub(4, 2);
+	mathtests::Test_PrimeNumbers(primesToTest);
+	mathtests::Test_Add(4, 2);
+	mathtests::Test_Sub(4, 2);
 
 	printf("Enter a value for how many factorial terms to generate: ");
-	arithtests::Test_FactorialPrint(GetUserInputIntFromConsole());
+	mathtests::Test_FactorialPrint(GetUserInputIntFromConsole());
 
 	printf("Enter a base for the power of calculation: ");
 	int base = GetUserInputIntFromConsole();
 	printf("Enter a power to multiply to: ");
 	int power = GetUserInputIntFromConsole();
-	arithtests::Test_PowerOf(base, power);
-	arithtests::Test_IterativePowerOf(base, power);
-	arithtests::Test_RecursiveSum(5);
-	arithtests::Test_TaylorSeriesRecurs(4, 10);
-	arithtests::Test_TaylorSeriesIter(4, 10);
-	arithtests::Test_TaylorSeriesOrderNRecurse(4, 10);
+	mathtests::Test_PowerOf(base, power);
+	mathtests::Test_IterativePowerOf(base, power);
+	mathtests::Test_RecursiveSum(5);
+	mathtests::Test_TaylorSeriesRecurs(4, 10);
+	mathtests::Test_TaylorSeriesIter(4, 10);
+	mathtests::Test_TaylorSeriesOrderNRecurse(4, 10);
 
 	printf("Enter a numeric term to calculate Fibonacci series to: ");
 	int input = GetUserInputIntFromConsole();
-	arithtests::Test_FibanacciIter(input);
-	arithtests::Test_FibanacciRecurse(input);
+	mathtests::Test_FibanacciIter(input);
+	mathtests::Test_FibanacciRecurse(input);
+
+	printf("Enter values to test the Combination Formula method.\n");
+	int n = GetUserInputIntFromConsole();
+	int r = GetUserInputIntFromConsole();
+	mathtests::Test_CombinationFormulaRecurse(n, r);
 }
 
 void UnitTests::Run_RecursionTests()

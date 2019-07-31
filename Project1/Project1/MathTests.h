@@ -26,7 +26,8 @@ public:
 	double TaylorSeriesOrderNIterative(double x, double n);
 	double TaylorSeriesOrderNRecurse(double x, double n);
 	uint64_t FibonacciSeriesIter(int n);
-	uint64_t FibonacciSeriesRecursive(int n);
+	int64_t FibonacciSeriesRecursive(int n);
+	T CombinationFormulaRecursive(T n, T r);
 
 private:
 	T _a;
@@ -248,9 +249,9 @@ inline uint64_t MathTests<T>::FibonacciSeriesIter(int n)
 }
 
 template<class T>
-inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
+inline int64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 {
-	std::vector<uint64_t> arr(n, -1);
+	static std::vector<int64_t> arr(n+1, -1);
 
 	if (n <= 1)
 	{
@@ -260,7 +261,7 @@ inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 	{
 		if (arr[n - 2] == -1)
 		{
-			arr[n - 2] = FibonacciSeriesRecursive(n - 2);
+			arr[n - 2] = FibonacciSeriesRecursive(n - 2);	
 		}
 		if (arr[n - 1] == -1)
 		{
@@ -271,7 +272,17 @@ inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 	return FibonacciSeriesRecursive(n-2) + FibonacciSeriesRecursive(n-1);
 }
 
-namespace arithtests
+template<class T>
+inline T MathTests<T>::CombinationFormulaRecursive(T n, T r)
+{
+	T t1, t2, t3;
+	t1 = Factorial(n);
+	t2 = Factorial(r);
+	t3 = Factorial(n - r);
+	return t1 /(T)(t2*t3);
+}
+
+namespace mathtests
 {
 
 template<class T>
@@ -396,5 +407,17 @@ void Test_FibanacciRecurse(const int n)
 	uint64_t res = ar.FibonacciSeriesRecursive(n);
 	printf("result Fibonacci series recursive to %d term = %llu\n", n, (unsigned long long)res);
 }
+
+template<class T>
+void Test_CombinationFormulaRecurse(const T n, const T r)
+{
+	MathTests<T> ar;
+	T res = ar.CombinationFormulaRecursive(n, r);
+	printf("result Combination formula with terms n = %llu and r =  %llu and res = %llu\n", 
+		(unsigned long long)n, 
+		(unsigned long long)r, 
+		(unsigned long long)res);
+}
+
 
 }
