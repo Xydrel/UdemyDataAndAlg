@@ -267,6 +267,7 @@ inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 			arr[n - 1] = FibonacciSeriesRecursive(n - 1);
 		}
 	}
+
 	return FibonacciSeriesRecursive(n-2) + FibonacciSeriesRecursive(n-1);
 }
 
