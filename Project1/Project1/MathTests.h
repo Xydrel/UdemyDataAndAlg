@@ -250,7 +250,7 @@ inline uint64_t MathTests<T>::FibonacciSeriesIter(int n)
 template<class T>
 inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 {
-	std::vector<int> arr(n, -1);
+	std::vector<uint64_t> arr(n, -1);
 
 	if (n <= 1)
 	{
