@@ -1,36 +1,55 @@
 #pragma once
 
-namespace basicshapes
+namespace primshapes
 {
 
-class Rectangle
+class Rectangle2D
 {
 public:
 	// ctors
-	Rectangle() { _length = 1; _bredth = 1; }
-	Rectangle(float len, float br) : _length(len), _bredth(br) {}
+	Rectangle2D();
+	Rectangle2D(float len, float br) : _length(len), _bredth(br) {}
 
 	// dtors
-	~Rectangle() {}
+	~Rectangle2D() {}
 	
 	// accessors
-	const float* GetRectLength() { return &_length; }
-	const float* GetRectBredth() { return &_bredth; }
+	const float* GetRectLength();
+	const float* GetRectBredth();
 
 	// facilitators
-	const float GetRectArea() { return _length * _bredth; }
-	const float GetPerimeter() { return 2 * (_length + _bredth); }
+	const float GetRectArea();
+	const float GetPerimeter();
 
 	// mutators
-	void SetRectLength(float len) { _length = len; }
-	void SetRectBredth(float br) { _bredth = br; }
-	void ChangeRectLength(float newLen) { _length = newLen; }
+	void SetRectLength(float len);
+	void SetRectBredth(float br);
+	void ChangeRectLength(float newLen);
 
 private:
 	// members
 	float _length;
 	float _bredth;
 };
+
+class Circle2D
+{
+public:
+	// ctors
+	Circle2D();
+	Circle2D(double rad);
+private:
+	// methods
+	void _SetCircleProperties();
+
+	// members
+	double _radius;
+	double _dia;
+	double _circumfrence;
+	double _area;
+};
+
+
 
 }
 

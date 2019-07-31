@@ -22,16 +22,22 @@
     <Filter Include="Header Files\UnitTests">
       <UniqueIdentifier>{ffe8d7d3-bc8b-4400-87f6-53aa25c49f2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\PrimitiveShapes">
+      <UniqueIdentifier>{8f2f7f2d-43e9-4ca9-bac3-bab9dfc2fc11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{7fd71320-7a9a-4e4e-8a96-a8ff3e939e29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
       <Filter>Source Files\ApplicationMain</Filter>
     </ClCompile>
+    <ClCompile Include="2DShapes.cpp">
+      <Filter>Header Files\PrimitiveShapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2DShapes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -46,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="MathTests.h">
       <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="2DShapes.h">
+      <Filter>Header Files\PrimitiveShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

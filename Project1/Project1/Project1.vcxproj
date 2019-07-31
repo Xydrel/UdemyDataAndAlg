@@ -116,10 +116,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="2DShapes.cpp" />
     <ClCompile Include="Application.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />
+    <ClInclude Include="Core.h" />
     <ClInclude Include="MathTests.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Includes.h" />
