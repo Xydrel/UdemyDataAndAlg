@@ -4,11 +4,11 @@
 #include <algorithm>
 
 template<class T>
-class Arithmatic
+class MathTests
 {
 public:
-	Arithmatic<T>();
-	Arithmatic(T a, T b);
+	MathTests<T>();
+	MathTests(T a, T b);
 
 	T Add();
 	T Add(const T& lft, const T& rt);
@@ -37,45 +37,45 @@ private:
 };
 
 template<class T>
-Arithmatic<T>::Arithmatic()
+MathTests<T>::MathTests()
 {
 	this->_a = 0;
 	this->_b = 0;
 }
 
 template<class T>
-Arithmatic<T>::Arithmatic(T a, T b)
+MathTests<T>::MathTests(T a, T b)
 {
 	this->_a = a;
 	this->_b = b;
 }
 
 template<class T>
-T Arithmatic<T>::Add()
+T MathTests<T>::Add()
 {
 	return _a + _b;
 }
 
 template<class T>
-inline T Arithmatic<T>::Add(const T& lft, const T& rt)
+inline T MathTests<T>::Add(const T& lft, const T& rt)
 {
 	return lft + rt;
 }
 
 template<class T>
-T Arithmatic<T>::Sub()
+T MathTests<T>::Sub()
 {
 	return _a - _b;
 }
 
 template<class T>
-inline T Arithmatic<T>::Sub(const T& lft, const T& rt)
+inline T MathTests<T>::Sub(const T& lft, const T& rt)
 {
 	return lft - rt;
 }
 
 template<class T>
-inline T Arithmatic<T>::Sum(const T n)
+inline T MathTests<T>::Sum(const T n)
 {
 	if (n > 0)
 	{
@@ -85,7 +85,7 @@ inline T Arithmatic<T>::Sum(const T n)
 }
 
 template<class T>
-bool Arithmatic<T>::IsPrime(const T val)
+bool MathTests<T>::IsPrime(const T val)
 {
 	// O(n) algorithm
 
@@ -103,7 +103,7 @@ bool Arithmatic<T>::IsPrime(const T val)
 }
 
 template<class T>
-T Arithmatic<T>::Factorial(T n)
+T MathTests<T>::Factorial(T n)
 {
 	if(n <= 0)
 	{
@@ -114,7 +114,7 @@ T Arithmatic<T>::Factorial(T n)
 }
 
 template<class T>
-inline T Arithmatic<T>::IterFactorial(T n)
+inline T MathTests<T>::IterFactorial(T n)
 {
 	T product = 1;
 	while (n > 0)
@@ -127,7 +127,7 @@ inline T Arithmatic<T>::IterFactorial(T n)
 }
 
 template<class T>
-inline T Arithmatic<T>::Pow(T n, T power)
+inline T MathTests<T>::Pow(T n, T power)
 {
 	if(power == 0)
 	{
@@ -141,7 +141,7 @@ inline T Arithmatic<T>::Pow(T n, T power)
 }
 
 template<class T>
-inline T Arithmatic<T>::IterPow(T n, T power)
+inline T MathTests<T>::IterPow(T n, T power)
 {
 	if (power == 0)
 		return 1;
@@ -168,7 +168,7 @@ inline T Arithmatic<T>::IterPow(T n, T power)
 
 // NOTE: This method is not actually being tested at this time.
 template<class T>
-inline void Arithmatic<T>::NPrimes(T n, T i, std::vector<T>* primes)
+inline void MathTests<T>::NPrimes(T n, T i, std::vector<T>* primes)
 {
 	if (primes->size() < n)
 	{
@@ -186,7 +186,7 @@ inline void Arithmatic<T>::NPrimes(T n, T i, std::vector<T>* primes)
 	return;
 }
 
-inline double Arithmatic<double>::TaylorSeriesRecursive(int x, int n)
+inline double MathTests<double>::TaylorSeriesRecursive(int x, int n)
 {
 	static double p = 1, f = 1;
 	double res;
@@ -204,7 +204,7 @@ inline double Arithmatic<double>::TaylorSeriesRecursive(int x, int n)
 }
 
 template<class T>
-inline double Arithmatic<T>::TaylorSeriesOrderNIterative(double x, double n)
+inline double MathTests<T>::TaylorSeriesOrderNIterative(double x, double n)
 {
 	double s = 1.0f;
 	for (; n > 0; n--)
@@ -217,7 +217,7 @@ inline double Arithmatic<T>::TaylorSeriesOrderNIterative(double x, double n)
 }
 
 template<class T>
-inline double Arithmatic<T>::TaylorSeriesOrderNRecurse(double x, double n)
+inline double MathTests<T>::TaylorSeriesOrderNRecurse(double x, double n)
 {
 	static double s = 1.0f;
 	if (n > 0)
@@ -229,7 +229,7 @@ inline double Arithmatic<T>::TaylorSeriesOrderNRecurse(double x, double n)
 }
 
 template<class T>
-inline uint64_t Arithmatic<T>::FibonacciSeriesIter(int n)
+inline uint64_t MathTests<T>::FibonacciSeriesIter(int n)
 {
 	if (n <= 1)
 	{
@@ -250,7 +250,7 @@ inline uint64_t Arithmatic<T>::FibonacciSeriesIter(int n)
 }
 
 template<class T>
-inline uint64_t Arithmatic<T>::FibonacciSeriesRecursive(int n)
+inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 {
 	std::vector<int> arr(n, -1);
 
@@ -273,7 +273,7 @@ inline uint64_t Arithmatic<T>::FibonacciSeriesRecursive(int n)
 }
 
 template<class T>
-inline T Arithmatic<T>::FindSeatFromN(T base, T seatNum)
+inline T MathTests<T>::FindSeatFromN(T base, T seatNum)
 {
 	// explicit funct
 	// f(n) = base + 3(n-1);
@@ -297,7 +297,7 @@ void TestPrimeNumbers(const T primesToTest)
 	// O(n^2) algorithm
 
 	std::vector<T> primes;
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	primes.reserve(primesToTest << 1);
 	// n
 	for (int i = 1; i < primesToTest; ++i)
@@ -332,7 +332,7 @@ void TestPrimeNumbers(const T primesToTest)
 template<class T>
 void TestAdd(const T lft, const T rt)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T sum = ar.Add(lft, rt);
 	printf("The sum of %d + %d = %d\n", lft, rt, sum);
 }
@@ -340,7 +340,7 @@ void TestAdd(const T lft, const T rt)
 template<class T>
 void TestSub(const T lft, const T rt)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T diff = ar.Sub(lft, rt);
 	printf("The diff of %d - %d = %d\n", lft, rt, diff);
 }
@@ -348,7 +348,7 @@ void TestSub(const T lft, const T rt)
 template<class T>
 void TestFactorialPrint(const T n)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T res = ar.Factorial(n);
 	printf("result of %d! =  %d\n", n, res);
 	T iterRes = ar.IterFactorial(n);
@@ -358,7 +358,7 @@ void TestFactorialPrint(const T n)
 template<class T>
 void TestPowerOf(const T n, const T power)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T res = ar.Pow(n, power);
 	printf("%d to the power of %d = %d\n", n, power, res);
 }
@@ -366,7 +366,7 @@ void TestPowerOf(const T n, const T power)
 template<class T>
 void TestIterativePowerOf(const T n, const T power)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T res = ar.IterPow(n, power);
 	printf("%d to the power of %d = %d\n", n, power, res);
 }
@@ -374,7 +374,7 @@ void TestIterativePowerOf(const T n, const T power)
 template<class T>
 void TestFindSeatCount(const T base, const T seatNum)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T seatCount = ar.FindSeatFromN(base, seatNum);
 	printf("Seat %d was %d from %d\n", seatNum, seatCount, base);
 }
@@ -382,42 +382,42 @@ void TestFindSeatCount(const T base, const T seatNum)
 template<class T>
 void TestRecursiveSum(const T n)
 {
-	Arithmatic<T> ar;
+	MathTests<T> ar;
 	T res = ar.Sum(n);
 	printf("result of summation to %d = %d\n", n, res);
 }
 
 void TestTaylorSeriesRecurs(const int x, const int n)
 {
-	Arithmatic<double> ar;
+	MathTests<double> ar;
 	double res = ar.TaylorSeriesRecursive(x, n);
 	printf("result of taylor series calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
 void TestTaylorSeriesIter(const int x, const int n)
 {
-	Arithmatic<double> ar;
+	MathTests<double> ar;
 	double res = ar.TaylorSeriesOrderNIterative(x, n);
 	printf("result of taylor series O(n) iterative calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
 void TestTaylorSeriesOrderNRecurse(const int x, const int n)
 {
-	Arithmatic<double> ar;
+	MathTests<double> ar;
 	double res = ar.TaylorSeriesOrderNRecurse(x, n);
 	printf("result of taylor series O(n) recursive calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
 void TestFibanacciIter(const int n)
 {
-	Arithmatic<double> ar;
+	MathTests<double> ar;
 	uint64_t res = ar.FibonacciSeriesIter(n);
 	printf("result Fibonacci series iterative to %d term = %llu\n", n, (unsigned long long)res);
 }
 
 void TestFibanacciRecurse(const int n)
 {
-	Arithmatic<double> ar;
+	MathTests<double> ar;
 	uint64_t res = ar.FibonacciSeriesRecursive(n);
 	printf("result Fibonacci series recursive to %d term = %llu\n", n, (unsigned long long)res);
 }

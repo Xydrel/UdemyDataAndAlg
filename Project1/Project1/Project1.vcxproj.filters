@@ -38,14 +38,14 @@
     <ClInclude Include="Includes.h">
       <Filter>Source Files\ApplicationMain</Filter>
     </ClInclude>
-    <ClInclude Include="Arithmatic.h">
-      <Filter>Header Files\Math</Filter>
-    </ClInclude>
     <ClInclude Include="Recursion.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="UnitTests.h">
       <Filter>Header Files\UnitTests</Filter>
+    </ClInclude>
+    <ClInclude Include="MathTests.h">
+      <Filter>Header Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

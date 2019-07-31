@@ -19,7 +19,7 @@ int main(void)
 
 	printf("exit initiated...");
 	// sleep a little to show the message
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	std::this_thread::sleep_for(std::chrono::milliseconds(800));
 
 	return 0;
 }
