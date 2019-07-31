@@ -28,8 +28,6 @@ public:
 	uint64_t FibonacciSeriesIter(int n);
 	uint64_t FibonacciSeriesRecursive(int n);
 
-	T FindSeatFromN(T base, T seatNum);
-
 private:
 	T _a;
 	T _b;
@@ -89,7 +87,7 @@ bool MathTests<T>::IsPrime(const T val)
 {
 	// O(n) algorithm
 
-	// n+1 operation
+	// n times operation
 	for (int i = 2; i < val; ++i)
 	{
 		// constant 1 operation
@@ -166,7 +164,7 @@ inline T MathTests<T>::IterPow(T n, T power)
 	return result;
 }
 
-// NOTE: This method is not actually being tested at this time.
+// TODO: This method is not actually being tested at this time.
 template<class T>
 inline void MathTests<T>::NPrimes(T n, T i, std::vector<T>* primes)
 {
@@ -272,22 +270,6 @@ inline uint64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 	return FibonacciSeriesRecursive(n-2) + FibonacciSeriesRecursive(n-1);
 }
 
-template<class T>
-inline T MathTests<T>::FindSeatFromN(T base, T seatNum)
-{
-	// explicit funct
-	// f(n) = base + 3(n-1);
-
-	// recursive function 
-	// f(1) = 15
-	// f(n) = f(n-1)+3
-
-	// if n = 35 result should be 117
-	
-
-	return 1;
-}
-
 namespace arithtests
 {
 
@@ -369,14 +351,6 @@ void TestIterativePowerOf(const T n, const T power)
 	MathTests<T> ar;
 	T res = ar.IterPow(n, power);
 	printf("%d to the power of %d = %d\n", n, power, res);
-}
-
-template<class T>
-void TestFindSeatCount(const T base, const T seatNum)
-{
-	MathTests<T> ar;
-	T seatCount = ar.FindSeatFromN(base, seatNum);
-	printf("Seat %d was %d from %d\n", seatNum, seatCount, base);
 }
 
 template<class T>
