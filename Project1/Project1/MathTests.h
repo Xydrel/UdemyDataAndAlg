@@ -275,7 +275,7 @@ namespace arithtests
 {
 
 template<class T>
-void TestPrimeNumbers(const T primesToTest)
+void Test_PrimeNumbers(const T primesToTest)
 {
 	// O(n^2) algorithm
 
@@ -313,7 +313,7 @@ void TestPrimeNumbers(const T primesToTest)
 }
 
 template<class T>
-void TestAdd(const T lft, const T rt)
+void Test_Add(const T lft, const T rt)
 {
 	MathTests<T> ar;
 	T sum = ar.Add(lft, rt);
@@ -321,7 +321,7 @@ void TestAdd(const T lft, const T rt)
 }
 
 template<class T>
-void TestSub(const T lft, const T rt)
+void Test_Sub(const T lft, const T rt)
 {
 	MathTests<T> ar;
 	T diff = ar.Sub(lft, rt);
@@ -329,7 +329,7 @@ void TestSub(const T lft, const T rt)
 }
 
 template<class T>
-void TestFactorialPrint(const T n)
+void Test_FactorialPrint(const T n)
 {
 	MathTests<T> ar;
 	T res = ar.Factorial(n);
@@ -339,7 +339,7 @@ void TestFactorialPrint(const T n)
 }
 
 template<class T>
-void TestPowerOf(const T n, const T power)
+void Test_PowerOf(const T n, const T power)
 {
 	MathTests<T> ar;
 	T res = ar.Pow(n, power);
@@ -347,7 +347,7 @@ void TestPowerOf(const T n, const T power)
 }
 
 template<class T>
-void TestIterativePowerOf(const T n, const T power)
+void Test_IterativePowerOf(const T n, const T power)
 {
 	MathTests<T> ar;
 	T res = ar.IterPow(n, power);
@@ -355,42 +355,42 @@ void TestIterativePowerOf(const T n, const T power)
 }
 
 template<class T>
-void TestRecursiveSum(const T n)
+void Test_RecursiveSum(const T n)
 {
 	MathTests<T> ar;
 	T res = ar.Sum(n);
 	printf("result of summation to %d = %d\n", n, res);
 }
 
-void TestTaylorSeriesRecurs(const int x, const int n)
+void Test_TaylorSeriesRecurs(const int x, const int n)
 {
 	MathTests<double> ar;
 	double res = ar.TaylorSeriesRecursive(x, n);
 	printf("result of taylor series calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
-void TestTaylorSeriesIter(const int x, const int n)
+void Test_TaylorSeriesIter(const int x, const int n)
 {
 	MathTests<double> ar;
 	double res = ar.TaylorSeriesOrderNIterative(x, n);
 	printf("result of taylor series O(n) iterative calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
-void TestTaylorSeriesOrderNRecurse(const int x, const int n)
+void Test_TaylorSeriesOrderNRecurse(const int x, const int n)
 {
 	MathTests<double> ar;
 	double res = ar.TaylorSeriesOrderNRecurse(x, n);
 	printf("result of taylor series O(n) recursive calculation for x = %d and n = %d is %lf\n", x, n, res);
 }
 
-void TestFibanacciIter(const int n)
+void Test_FibanacciIter(const int n)
 {
 	MathTests<double> ar;
 	uint64_t res = ar.FibonacciSeriesIter(n);
 	printf("result Fibonacci series iterative to %d term = %llu\n", n, (unsigned long long)res);
 }
 
-void TestFibanacciRecurse(const int n)
+void Test_FibanacciRecurse(const int n)
 {
 	MathTests<double> ar;
 	uint64_t res = ar.FibonacciSeriesRecursive(n);

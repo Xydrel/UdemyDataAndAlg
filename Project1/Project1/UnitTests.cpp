@@ -85,29 +85,28 @@ void UnitTests::Run_ArithmeticTests()
 {
 	printf("Enter a value for how many numbers to evaluate for prime: ");
 	int primesToTest = GetUserInputIntFromConsole();
-	arithtests::TestPrimeNumbers(primesToTest);
-	arithtests::TestAdd(4, 2);
-	arithtests::TestSub(4, 2);
+	arithtests::Test_PrimeNumbers(primesToTest);
+	arithtests::Test_Add(4, 2);
+	arithtests::Test_Sub(4, 2);
 
 	printf("Enter a value for how many factorial terms to generate: ");
-	arithtests::TestFactorialPrint(GetUserInputIntFromConsole());
+	arithtests::Test_FactorialPrint(GetUserInputIntFromConsole());
+
 	printf("Enter a base for the power of calculation: ");
 	int base = GetUserInputIntFromConsole();
 	printf("Enter a power to multiply to: ");
 	int power = GetUserInputIntFromConsole();
-	arithtests::TestPowerOf(base, power);
-	arithtests::TestIterativePowerOf(base, power);
-	//arithtests::TestFindSeatCount(15, 117); // function is on hold for now
-	arithtests::TestRecursiveSum(5);
-	arithtests::TestTaylorSeriesRecurs(4, 10);
-	arithtests::TestTaylorSeriesIter(4, 10);
-	arithtests::TestTaylorSeriesOrderNRecurse(4, 10);
+	arithtests::Test_PowerOf(base, power);
+	arithtests::Test_IterativePowerOf(base, power);
+	arithtests::Test_RecursiveSum(5);
+	arithtests::Test_TaylorSeriesRecurs(4, 10);
+	arithtests::Test_TaylorSeriesIter(4, 10);
+	arithtests::Test_TaylorSeriesOrderNRecurse(4, 10);
 
 	printf("Enter a numeric term to calculate Fibonacci series to: ");
-	//std::string input = GetUserInputStringFromConsole();
 	int input = GetUserInputIntFromConsole();
-	arithtests::TestFibanacciIter(input);
-	arithtests::TestFibanacciRecurse(input);
+	arithtests::Test_FibanacciIter(input);
+	arithtests::Test_FibanacciRecurse(input);
 }
 
 void UnitTests::Run_RecursionTests()
