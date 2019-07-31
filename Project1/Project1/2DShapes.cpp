@@ -4,11 +4,38 @@
 namespace primshapes
 {
 
+// -- Basic Shape Implementation --
+Shape2D::Shape2D()
+{
+	_x = 0.f;
+	_y = 0.f;
+}
+
+Shape2D::~Shape2D()
+{
+}
+// -- End Basic Shape Implementation --
+
 // -- Rectangle Implementation -- 
 Rectangle2D::Rectangle2D()
 {
 	_length = 1;
 	_bredth = 1;
+}
+
+
+Rectangle2D::~Rectangle2D()
+{
+}
+
+const void Rectangle2D::SetX(double x)
+{
+	_x = x;
+}
+
+const void Rectangle2D::SetY(double y)
+{
+	_y = y;
 }
 
 const float* Rectangle2D::GetRectLength()
@@ -49,6 +76,8 @@ void Rectangle2D::ChangeRectLength(float newLen)
 void Rectangle2D::_UpdateRectProperties()
 {
 	_area = _bredth * _length;
+	_x = 0.f;
+	_y = 0.f;
 }
 
 // -- End Rectangle Implementation
@@ -66,6 +95,20 @@ Circle2D::Circle2D(double rad)
 	_UpdateCircleProperties();
 }
 
+Circle2D::~Circle2D()
+{
+}
+
+const void Circle2D::SetX(double x)
+{
+	_x = x;
+}
+
+const void Circle2D::SetY(double y)
+{
+	_y = y;
+}
+
 void Circle2D::SetCircleRadius(double newRad)
 {
 	_radius = newRad;
@@ -78,7 +121,11 @@ void Circle2D::_UpdateCircleProperties()
 	_dia = _radius + _radius;
 	_circumfrence = 2 * mathconsts::pi * _radius;
 	_area = _radius * _radius * mathconsts::pi;
+	_x = 0.f;
+	_y = 0.f;
 }
 // -- End Circle Implementation
+
+
 
 } // end primshapes

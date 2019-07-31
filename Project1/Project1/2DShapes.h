@@ -3,7 +3,29 @@
 namespace primshapes
 {
 
-class Rectangle2D
+	class Shape2D
+	{
+	public:
+		// ctors
+		Shape2D();
+		Shape2D(double x, double y) : _x(x), _y(y) {};
+
+		// dtors
+		~Shape2D();
+
+	// pure virtuals
+	virtual const void SetX(double x) = 0;
+	virtual const void SetY(double y) = 0;
+
+protected:
+	double _x;
+	double _y;
+
+private:
+
+};
+
+class Rectangle2D : public Shape2D
 {
 public:
 	// ctors
@@ -11,7 +33,12 @@ public:
 	Rectangle2D(float len, float br) : _length(len), _bredth(br) {}
 
 	// dtors
-	~Rectangle2D() {}
+	~Rectangle2D();
+
+	// Shape2D
+	const void SetX(double x) override;
+	const void SetY(double y) override;
+	// End Shape2D
 	
 	// accessors
 	const float* GetRectLength();
@@ -34,12 +61,20 @@ private:
 	float _area;
 };
 
-class Circle2D
+class Circle2D : public Shape2D
 {
 public:
 	// ctors
 	Circle2D();
 	Circle2D(double rad);
+
+	// dtors
+	~Circle2D();
+
+	// Shape2D
+	const void SetX(double x) override;
+	const void SetY(double y) override;
+	// End Shape2D
 
 	// mutators
 	void SetCircleRadius(double newRad);
