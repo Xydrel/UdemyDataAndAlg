@@ -16,9 +16,7 @@ public:
 	// accessors
 	const float* GetRectLength();
 	const float* GetRectBredth();
-
-	// facilitators
-	const float GetRectArea();
+	const float* GetRectArea();
 	const float GetPerimeter();
 
 	// mutators
@@ -27,9 +25,13 @@ public:
 	void ChangeRectLength(float newLen);
 
 private:
+	// methods
+	void _UpdateRectProperties();
+
 	// members
 	float _length;
 	float _bredth;
+	float _area;
 };
 
 class Circle2D
@@ -38,9 +40,13 @@ public:
 	// ctors
 	Circle2D();
 	Circle2D(double rad);
+
+	// mutators
+	void SetCircleRadius(double newRad);
+
 private:
 	// methods
-	void _SetCircleProperties();
+	void _UpdateCircleProperties();
 
 	// members
 	double _radius;
