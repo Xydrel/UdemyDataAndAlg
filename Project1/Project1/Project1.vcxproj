@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />
+    <ClInclude Include="Array.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="MathTests.h" />
     <ClInclude Include="Card.h" />

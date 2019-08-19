@@ -28,6 +28,9 @@
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{7fd71320-7a9a-4e4e-8a96-a8ff3e939e29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Structures">
+      <UniqueIdentifier>{6cc897a8-45f2-450a-b07a-beb4cb622dbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="Core.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Array.h">
+      <Filter>Header Files\Structures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

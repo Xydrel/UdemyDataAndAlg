@@ -5,3 +5,7 @@
 #include "Card.h"
 #include "MathTests.h"
 #include "Recursion.h"
+
+
+// internal structures
+#include "Array.h"
