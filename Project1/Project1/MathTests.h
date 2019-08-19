@@ -28,6 +28,9 @@ public:
 	uint64_t FibonacciSeriesIter(int n);
 	int64_t FibonacciSeriesRecursive(int n);
 	T CombinationFormulaRecursive(T n, T r);
+	T NCRPsacalsTriangle(T n, T r);
+	T nCr(T n, T r);
+	void TOH(int n, int t1, int t2, int t3);
 
 private:
 	T _a;
@@ -275,11 +278,46 @@ inline int64_t MathTests<T>::FibonacciSeriesRecursive(int n)
 template<class T>
 inline T MathTests<T>::CombinationFormulaRecursive(T n, T r)
 {
+	// nCr = n!/r!(n-r)!
+
 	T t1, t2, t3;
 	t1 = Factorial(n);
 	t2 = Factorial(r);
 	t3 = Factorial(n - r);
 	return t1 /(T)(t2*t3);
+}
+
+template<class T>
+inline T MathTests<T>::NCRPsacalsTriangle(T n, T r)
+{
+	if (r == 0 || n == r)
+	{
+		return 1;
+	}
+	return NCRPsacalsTriangle(n - 1, r - 1) + NCRPsacalsTriangle(n - 1, r);
+}
+
+template<class T>
+inline T MathTests<T>::nCr(T n, T r)
+{
+	// nCr = n!/r!(n-r)!
+	T num, denom;
+
+	num = Factorial(n);
+	denom = Factorial(r) * (long double)Factorial(n - r);
+
+	return num.denom;
+}
+
+template<class T>
+inline void MathTests<T>::TOH(int n, int t1, int t2, int t3)
+{
+	if (n > 0)
+	{
+		TOH(n - 1, t1, t3, t2);
+		printf("from %d to %d\n", t1, t3);
+		TOH(n - 1, t2, t1, t3);
+	}
 }
 
 namespace mathtests
@@ -419,5 +457,35 @@ void Test_CombinationFormulaRecurse(const T n, const T r)
 		(unsigned long long)res);
 }
 
+template<class T>
+void Test_NCRPascalsTriangle(const T n, const T r)
+{
+	MathTests<T> ar;
+	T res = ar.NCRPsacalsTriangle(n, r);
+	printf("result NCR with using Pascal's Triangle with terms n = %llu and r =  %llu and res = %llu\n",
+		(unsigned long long)n,
+		(unsigned long long)r,
+		(unsigned long long)res);
+}
+
+void Test_TOH(int n, int t1, int t2, int t3)
+{
+	MathTests<int> ar;
+	ar.TOH(n, t1, t2, t3);
+}
+
+int f(int &x, int c)
+
+{
+
+	c = c - 1;
+
+	if (c == 0) return 1;
+
+	x = x + 1;
+
+	return f(x, c) * x;
+
+}
 
 }

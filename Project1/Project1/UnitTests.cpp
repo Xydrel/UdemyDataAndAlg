@@ -112,6 +112,11 @@ void UnitTests::Run_ArithmeticTests()
 	int n = GetUserInputIntFromConsole();
 	int r = GetUserInputIntFromConsole();
 	mathtests::Test_CombinationFormulaRecurse(n, r);
+	mathtests::Test_NCRPascalsTriangle(n, r);
+
+	printf("Enter a number of discs to move for the tower of Hanoi problem: ");
+	n = GetUserInputIntFromConsole();
+	mathtests::Test_TOH(n, 1, 2, 3);
 }
 
 void UnitTests::Run_RecursionTests()
