@@ -7,7 +7,8 @@ class Array
 {
 public:
 	Array(const size_t size);
-	~Array();
+	Array() = delete;
+	~Array() = default;
 
 	void Push(const T& elem);
 	void Pop();
@@ -24,11 +25,6 @@ template<typename T>
 inline Array<T>::Array(const size_t size)
 {
 	_container.reserve(size);
-}
-
-template<typename T>
-inline Array<T>::~Array()
-{
 }
 
 template<typename T>
