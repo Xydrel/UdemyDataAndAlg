@@ -12,7 +12,7 @@ public:
 	void Push(T elem);
 	void Pop();
 	
-	T operator[](size_t i);
+	T& operator[](size_t index);
 
 	bool Contains(T elem);
 
@@ -44,9 +44,9 @@ inline void Array<T>::Pop()
 }
 
 template<typename T>
-inline T Array<T>::operator[](size_t i)
+inline T& Array<T>::operator[](size_t index)
 {
-	return _container[i];
+	return _container[index];
 }
 
 template<typename T>
