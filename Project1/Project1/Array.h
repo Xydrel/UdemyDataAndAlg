@@ -6,22 +6,22 @@ template<typename T>
 class Array
 {
 public:
-	Array(size_t size);
+	Array(const size_t size);
 	~Array();
 
-	void Push(T elem);
+	void Push(const T& elem);
 	void Pop();
 	
-	T& operator[](size_t index);
+	T& operator[](const size_t index);
 
-	bool Contains(T elem);
+	bool Contains(const T& elem) const;
 
 private:
 	std::vector<T> _container;
 };
 
 template<typename T>
-inline Array<T>::Array(size_t size)
+inline Array<T>::Array(const size_t size)
 {
 	_container.reserve(size);
 }
@@ -32,7 +32,7 @@ inline Array<T>::~Array()
 }
 
 template<typename T>
-inline void Array<T>::Push(T elem)
+inline void Array<T>::Push(const T& elem)
 {
 	_container.push_back(elem);
 }
@@ -44,13 +44,13 @@ inline void Array<T>::Pop()
 }
 
 template<typename T>
-inline T& Array<T>::operator[](size_t index)
+inline T& Array<T>::operator[](const size_t index)
 {
 	return _container[index];
 }
 
 template<typename T>
-inline bool Array<T>::Contains(T elem)
+inline bool Array<T>::Contains(const T& elem) const
 {
 	if (_container.size() > 0)
 	{
