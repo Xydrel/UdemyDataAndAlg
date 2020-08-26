@@ -3,12 +3,12 @@
 #include <vector>
 
 template<typename T>
-class Array
+class DynamicArray
 {
 public:
-	Array(const size_t size);
-	Array() = delete;
-	~Array() = default;
+	DynamicArray(const size_t size);
+	DynamicArray() = delete;
+	~DynamicArray() = default;
 
 	void Push(const T& elem);
 	void Pop();
@@ -22,31 +22,31 @@ private:
 };
 
 template<typename T>
-inline Array<T>::Array(const size_t size)
+inline DynamicArray<T>::DynamicArray(const size_t size)
 {
 	_container.reserve(size);
 }
 
 template<typename T>
-inline void Array<T>::Push(const T& elem)
+inline void DynamicArray<T>::Push(const T& elem)
 {
 	_container.push_back(elem);
 }
 
 template<typename T>
-inline void Array<T>::Pop()
+inline void DynamicArray<T>::Pop()
 {
 	_container.pop_back();
 }
 
 template<typename T>
-inline T& Array<T>::operator[](const size_t index)
+inline T& DynamicArray<T>::operator[](const size_t index)
 {
 	return _container[index];
 }
 
 template<typename T>
-inline bool Array<T>::Contains(const T& elem) const
+inline bool DynamicArray<T>::Contains(const T& elem) const
 {
 	if (_container.size() > 0)
 	{

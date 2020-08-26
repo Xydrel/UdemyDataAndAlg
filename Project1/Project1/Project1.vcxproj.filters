@@ -65,7 +65,7 @@
     <ClInclude Include="Core.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Array.h">
+    <ClInclude Include="DynamicArray.h">
       <Filter>Header Files\Structures</Filter>
     </ClInclude>
   </ItemGroup>

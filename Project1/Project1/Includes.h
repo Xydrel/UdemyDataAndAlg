@@ -8,4 +8,4 @@
 
 
 // internal structures
-#include "Array.h"
+#include "DynamicArray.h"
