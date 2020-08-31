@@ -15,13 +15,15 @@ public:
 	int GetUserInputIntFromConsole();
 
 	void SetAndRunDesiredTests();
-	bool AreAnyTestsEnabledForRun();
+	bool AreAnyTestsEnabledForRun() const;
 
+	void Run_StructureTests();
 	void Run_EnabledTests();
 	void Run_ArithmeticTests();
 	void Run_RecursionTests();
 
 private:
+	bool _bShouldTestStructures = false;
 	bool _bShouldTestArith = false;
 	bool _bShouldTestRecursion = false;
 

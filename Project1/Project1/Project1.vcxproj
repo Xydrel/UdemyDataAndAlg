@@ -122,12 +122,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />
+    <ClInclude Include="Array.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="MathTests.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="Recursion.h" />
+    <ClInclude Include="StructureTests.h" />
     <ClInclude Include="UnitTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

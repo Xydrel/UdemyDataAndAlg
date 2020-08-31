@@ -34,8 +34,16 @@ int UnitTests::GetUserInputIntFromConsole()
 
 void UnitTests::SetAndRunDesiredTests()
 {
+    printf("Should the Structure tests be run?: ");
+    std::string userResponse = GetUserInputStringFromConsole();
+    if (userResponse == "y" || userResponse == "Y")
+    {
+        _bShouldTestStructures = true;
+    }
+
 	printf("Should the Arith tests be run?: ");
-	std::string userResponse = GetUserInputStringFromConsole();
+	userResponse = "";
+	userResponse = GetUserInputStringFromConsole();
 	if (userResponse == "y" || userResponse == "Y")
 	{
 		_bShouldTestArith = true;
@@ -52,9 +60,10 @@ void UnitTests::SetAndRunDesiredTests()
 	Run_EnabledTests();
 }
 
-bool UnitTests::AreAnyTestsEnabledForRun()
+bool UnitTests::AreAnyTestsEnabledForRun() const
 {
-	if (_bShouldTestArith == true ||
+	if (_bShouldTestStructures == true ||
+		_bShouldTestArith == true ||
 		_bShouldTestRecursion == true)
 	{
 		return true;
@@ -65,6 +74,11 @@ bool UnitTests::AreAnyTestsEnabledForRun()
 
 void UnitTests::Run_EnabledTests()
 {
+	if (_bShouldTestStructures)
+	{
+		Run_StructureTests();
+	}
+
 	if (_bShouldTestArith)
 	{
 		Run_ArithmeticTests();
@@ -79,6 +93,11 @@ void UnitTests::Run_EnabledTests()
 	{
 		printf("No tests were enabled for run...\n");
 	}
+}
+
+void UnitTests::Run_StructureTests()
+{
+	StructTests::Run_ArrayConstructionTest();
 }
 
 void UnitTests::Run_ArithmeticTests()
