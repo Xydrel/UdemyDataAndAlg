@@ -19,7 +19,7 @@ public:
     T& operator[] (size_t index);
 
     void insert(T element);
-    //void insertAt(T element, size_t index);
+    void insertAt(T element, size_t index);
 
     void push_back(T element);
 
@@ -38,6 +38,7 @@ inline Array<T>::Array(size_t len) :
     _maxSize(len),
     _count(0)
 {
+    _container = { 0 };
 }
 
 template<typename T>
@@ -63,6 +64,29 @@ template<typename T>
 inline void Array<T>::insert(T element)
 {
     
+}
+
+template<typename T>
+inline void Array<T>::insertAt(T element, size_t index)
+{
+    if (index > _maxSize)
+    {
+        auto extendedArray = Array<T>[_maxSize << 1] = { 0 }; // default init to 0
+        for (size_t i = 0; i < _maxSize; i++)
+        {
+            extendedArray[i] = _container[i];
+        }
+
+        extendedArray[index] = element;
+        _container = extendedArray;
+        _count += 1;
+        _maxSize <<= 1;
+    }
+    else
+    {
+        _container[index] = element;
+        _count += 1;
+    }
 }
 
 template<typename T>
