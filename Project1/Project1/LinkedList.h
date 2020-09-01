@@ -11,7 +11,7 @@ class IntNode
 {
 public:
     explicit IntNode();
-    ~IntNode() = default;
+    ~IntNode();
 
     const int GetData() const;
     void SetData(const int data);
@@ -33,14 +33,18 @@ public:
     size_t Size() const;
 
     void Append(std::shared_ptr<IntNode>& node);
+    void InsertAt(std::shared_ptr<IntNode>& node, size_t index);
+    void Remove(size_t index);
 
     void PrintDataValues() const;
 
 private:
     void incrementSize();
+    void decrementSize();
 
 private:
     std::shared_ptr<IntNode> _head;
+    std::shared_ptr<IntNode> _last;
     size_t _size = 0;
 };
 
@@ -51,6 +55,10 @@ inline IntNode::IntNode()
 {
     _data = -1;
     _next = nullptr;
+}
+
+inline IntNode::~IntNode()
+{
 }
 
 inline const int IntNode::GetData() const
@@ -76,6 +84,7 @@ inline void IntNode::SetNext(std::shared_ptr<IntNode> node)
 inline IntLinkedList::IntLinkedList()
 {
     _head = nullptr;
+    _last = nullptr;
 }
 
 inline size_t IntLinkedList::Size() const
@@ -89,6 +98,7 @@ inline void IntLinkedList::Append(std::shared_ptr<IntNode>& node)
     if (_head == nullptr)
     {
         _head = node;
+        _last = node;
     }
     else
     {
@@ -99,9 +109,86 @@ inline void IntLinkedList::Append(std::shared_ptr<IntNode>& node)
         }
 
         current->SetNext(node);
+        _last = node;
     }
 
     incrementSize();
+}
+
+inline void IntLinkedList::InsertAt(std::shared_ptr<IntNode>& node, size_t index)
+{
+    if (_head == nullptr)
+    {
+        _head = node;
+        _last = node;
+
+        incrementSize();
+    }
+    else
+    {
+        auto current = _head;
+        for (size_t i = 0; i <= index; i++)
+        {
+            if (current == _last)
+            {
+                current->SetNext(node);
+                return;
+            }
+
+            if (i == index - 1)
+            {
+                if (current->GetNext() != nullptr)
+                {
+                    node->SetNext(current->GetNext());
+                    current->SetNext(node);
+
+                    return;
+                }
+                else
+                {
+                    current->SetNext(node);
+                    _last = node;
+
+                    return;
+                }
+            }
+
+            current = current->GetNext();
+        }
+
+        incrementSize();
+    }
+}
+
+inline void IntLinkedList::Remove(size_t index)
+{
+    if (_head != nullptr)
+    {
+        auto current = _head;
+        for (size_t i = 0; i < index; i++)
+        {
+            if (i == index - 1)
+            {
+                auto oldNext = current->GetNext();
+                auto newNext = oldNext->GetNext();
+                
+                if (oldNext == _last)
+                {
+                    _last = newNext;
+                }
+
+                current->SetNext(newNext);
+
+                oldNext = nullptr;
+
+                decrementSize();
+
+                return;
+            }
+
+            current = current->GetNext();
+        }
+    }
 }
 
 inline void IntLinkedList::PrintDataValues() const
@@ -123,4 +210,9 @@ inline void IntLinkedList::PrintDataValues() const
 inline void IntLinkedList::incrementSize()
 {
     _size++;
+}
+
+inline void IntLinkedList::decrementSize()
+{
+    _size--;
 }

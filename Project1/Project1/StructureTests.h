@@ -68,11 +68,30 @@ inline void StructureTests::TestSingleLinkedList()
 
     PrintIntLinkedListStatistics(*intLinkedList);
 
+    intLinkedList->Remove(3); //remove 48
+
+    PrintIntLinkedListStatistics(*intLinkedList);
+
+    {
+        auto newNode = std::make_shared<IntNode>();
+        newNode->SetData(99);
+        intLinkedList->InsertAt(newNode, 5); //after 72
+
+        PrintIntLinkedListStatistics(*intLinkedList);
+    }
+
+    {
+        auto newNode = std::make_shared<IntNode>();
+        newNode->SetData(256);
+        intLinkedList->InsertAt(newNode, 10); //after 106
+
+        PrintIntLinkedListStatistics(*intLinkedList);
+    }
 }
 
 inline void StructureTests::PrintIntLinkedListStatistics(const IntLinkedList& list) const
 {
-    printf("\nList size is: %d", (long long)list.Size());
+    printf("\nList size is: %d", (int)list.Size());
 
     list.PrintDataValues();
 }
