@@ -13,15 +13,11 @@ public:
     T* GetData();
     void SetData(const T& data);
 
-    SinglyLinkedNode<T>* GetHead();
-    void SetHead(const SinglyLinkedNode<T>& head);
-
     SinglyLinkedNode<T>* GetNext();
     void SetNext(const SinglyLinkedNode<T>& next);
 
 private:
     T _data;
-    std::unique_ptr<SinglyLinkedNode<T>> _head;
     std::unique_ptr<SinglyLinkedNode<T>> _next;
 };
 
@@ -34,9 +30,6 @@ public:
     T* GetData();
     void SetData(const T& data);
 
-    SinglyLinkedNode<T>* GetHead();
-    void SetHead(const SinglyLinkedNode<T>& head);
-
     SinglyLinkedNode<T>* GetNext();
     void SetNext(const SinglyLinkedNode<T>& next);
     
@@ -45,23 +38,30 @@ public:
 
 private:
     T _data;
-    std::unique_ptr<DoublyLinkedNode<T>> _head;
     std::unique_ptr<DoublyLinkedNode<T>> _next;
     std::unique_ptr<DoublyLinkedNode<T>> _prev;
 };
 
+template<typename T>
 class SingleLinkedList
 {
 public:
     explicit SingleLinkedList() = default;
 
+    void Insert(SinglyLinkedNode<T>& node);
+
 private:
+    std::unique_ptr<SinglyLinkedNode<T>> _head;
 };
 
+template<typename T>
 class DoublyLinkedList
 {
 public:
     explicit DoublyLinkedList() = default;
+
+private:
+    std::unique_ptr<DoublyLinkedNode<T>> _head;
 };
 
 //Implementation---------------------------------------------------------------
@@ -83,18 +83,6 @@ template<typename T>
 inline void SinglyLinkedNode<T>::SetData(const T& data)
 {
     _data = data;
-}
-
-template<typename T>
-inline SinglyLinkedNode<T>* SinglyLinkedNode<T>::GetHead()
-{
-    return _head;
-}
-
-template<typename T>
-inline void SinglyLinkedNode<T>::SetHead(const SinglyLinkedNode<T>& head)
-{
-    head = _head;
 }
 
 template<typename T>
@@ -129,18 +117,6 @@ inline void DoublyLinkedNode<T>::SetData(const T& data)
 }
 
 template<typename T>
-inline SinglyLinkedNode<T>* DoublyLinkedNode<T>::GetHead()
-{
-    return _head;
-}
-
-template<typename T>
-inline void DoublyLinkedNode<T>::SetHead(const SinglyLinkedNode<T>& head)
-{
-    _head = head;
-}
-
-template<typename T>
 inline SinglyLinkedNode<T>* DoublyLinkedNode<T>::GetNext()
 {
     return _next;
@@ -162,4 +138,13 @@ template<typename T>
 inline void DoublyLinkedNode<T>::SetPrev(const SinglyLinkedNode<T>& prev)
 {
     _prev = prev;
+}
+
+template<typename T>
+inline void SingleLinkedList<T>::Insert(SinglyLinkedNode<T>& node)
+{
+    if (node != nullptr)
+    {
+        
+    }
 }
