@@ -11,4 +11,5 @@
 
 // internal structures
 #include "Array.h"
+#include "Array2D.h"
 #include "DynamicArray.h"

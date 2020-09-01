@@ -22,6 +22,8 @@ public:
 
     void pop_back();
 
+    T& search(T rhs);
+
 private:
     std::vector<T> _container;
     size_t _maxSize;
@@ -57,12 +59,6 @@ inline T& Array<T>::at(const size_t index)
     return result;
 }
 
-//template<typename T>
-//inline T& Array<T>::operator[](const size_t index)
-//{
-//    T& result = _container[index];
-//    return result;
-//}
 
 template<typename T>
 inline void Array<T>::insertAt(T element, size_t index)
@@ -89,4 +85,20 @@ inline void Array<T>::pop_back()
         _container.pop_back();
         _count -= 1;
     }
+}
+
+template<typename T>
+inline T& Array<T>::search(T rhs)
+{
+    auto result = T();
+    for (size_t i = 0; i < _container.size(); i++)
+    {
+        if (_container[i] == rhs)
+        {
+            result = _container[i];
+            break;
+        }
+    }
+
+    return result;
 }

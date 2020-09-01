@@ -74,5 +74,8 @@
     <ClInclude Include="StructureTests.h">
       <Filter>Header Files\Structures</Filter>
     </ClInclude>
+    <ClInclude Include="Array2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
