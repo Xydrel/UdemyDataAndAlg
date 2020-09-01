@@ -8,7 +8,7 @@ template<typename T>
 class SinglyLinkedNode
 {
 public:
-    explicit SinglyLinkedNode() = default;
+    explicit SinglyLinkedNode(T& data);
 
     T* GetData();
     void SetData(const T& data);
@@ -29,7 +29,7 @@ template<typename T>
 class DoublyLinkedNode
 {
 public:
-    explicit DoublyLinkedNode() = default;
+    explicit DoublyLinkedNode(T& data);
 
     T* GetData();
     void SetData(const T& data);
@@ -57,6 +57,12 @@ class GenericLinkedList
 //Implementation---------------------------------------------------------------
 
 //SinglyLinkedNode
+template<typename T>
+inline SinglyLinkedNode<T>::SinglyLinkedNode(T& data)
+{
+    _data = data;
+}
+
 template<typename T>
 inline T* SinglyLinkedNode<T>::GetData()
 {
@@ -91,6 +97,13 @@ template<typename T>
 inline void SinglyLinkedNode<T>::SetNext(const SinglyLinkedNode<T>& next)
 {
     _next = next;
+}
+
+//DoublyLinkedNode
+template<typename T>
+inline DoublyLinkedNode<T>::DoublyLinkedNode(T& data)
+{
+    _data = data;
 }
 
 template<typename T>
