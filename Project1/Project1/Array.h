@@ -1,10 +1,7 @@
 #pragma once
 
 //Includes---------------------------------------------------------------------
-
-
-//Constants--------------------------------------------------------------------
-constexpr size_t defaultContianerSize = 8; //8*sizeof(T) bytes for starting data structure
+#include <vector>
 
 //Types------------------------------------------------------------------------
 template<typename T>
@@ -15,10 +12,10 @@ public:
 
     size_t size() const;
     size_t count() const;
+    T& at(const size_t index);
 
-    T& operator[] (size_t index);
+    const T& operator[] (const size_t index) const { return _container[index]; }
 
-    void insert(T element);
     void insertAt(T element, size_t index);
 
     void push_back(T element);
@@ -26,7 +23,7 @@ public:
     void pop_back();
 
 private:
-    T* _container;
+    std::vector<T> _container;
     size_t _maxSize;
     size_t _count;
 };
@@ -34,18 +31,17 @@ private:
 //Inline Implementation--------------------------------------------------------
 template<typename T>
 inline Array<T>::Array(size_t len) :
-    _container(new T[len]),
+    _container(std::vector<T>()),
     _maxSize(len),
     _count(0)
 {
-    _container = { 0 };
+    _container.reserve(len);
 }
 
 template<typename T>
 inline size_t Array<T>::size() const
 {
-    //return sizeof(_container) / sizeof(T);
-    return _maxSize;
+    return _container.size();
 }
 
 template<typename T>
@@ -55,38 +51,24 @@ inline size_t Array<T>::count() const
 }
 
 template<typename T>
-inline T& Array<T>::operator[](size_t index)
+inline T& Array<T>::at(const size_t index)
 {
-    return _container[index];
+    auto result = _container[index];
+    return result;
 }
 
-template<typename T>
-inline void Array<T>::insert(T element)
-{
-    
-}
+//template<typename T>
+//inline T& Array<T>::operator[](const size_t index)
+//{
+//    T& result = _container[index];
+//    return result;
+//}
 
 template<typename T>
 inline void Array<T>::insertAt(T element, size_t index)
 {
-    if (index > _maxSize)
-    {
-        auto extendedArray = Array<T>[_maxSize << 1] = { 0 }; // default init to 0
-        for (size_t i = 0; i < _maxSize; i++)
-        {
-            extendedArray[i] = _container[i];
-        }
-
-        extendedArray[index] = element;
-        _container = extendedArray;
-        _count += 1;
-        _maxSize <<= 1;
-    }
-    else
-    {
-        _container[index] = element;
-        _count += 1;
-    }
+    _container[index] = element;
+    _count += 1;
 }
 
 template<typename T>
@@ -95,7 +77,7 @@ inline void Array<T>::push_back(T element)
     if (_count <= _maxSize)
     {
         _count += 1;
-        _container[_count] = element;
+        _container.push_back(element);
     }
 }
 
@@ -104,7 +86,7 @@ inline void Array<T>::pop_back()
 {
     if (_count != 0)
     {
-        //just lower the count so the data will be over-written as that's more performant
+        _container.pop_back();
         _count -= 1;
     }
 }
