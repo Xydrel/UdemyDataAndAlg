@@ -21,8 +21,8 @@ public:
 
 private:
     T _data;
-    SinglyLinkedNode<T>* _head;
-    SinglyLinkedNode<T>* _next;
+    std::unique_ptr<SinglyLinkedNode<T>> _head;
+    std::unique_ptr<SinglyLinkedNode<T>> _next;
 };
 
 template<typename T>
@@ -45,13 +45,23 @@ public:
 
 private:
     T _data;
-    DoublyLinkedNode<T>* _head;
-    DoublyLinkedNode<T>* _next;
-    DoublyLinkedNode<T>* _prev;
+    std::unique_ptr<DoublyLinkedNode<T>> _head;
+    std::unique_ptr<DoublyLinkedNode<T>> _next;
+    std::unique_ptr<DoublyLinkedNode<T>> _prev;
 };
 
-class GenericLinkedList
+class SingleLinkedList
 {
+public:
+    explicit SingleLinkedList() = default;
+
+private:
+};
+
+class DoublyLinkedList
+{
+public:
+    explicit DoublyLinkedList() = default;
 };
 
 //Implementation---------------------------------------------------------------
