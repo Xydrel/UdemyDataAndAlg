@@ -1,11 +1,10 @@
 #pragma once
 
+//Includes---------------------------------------------------------------------
 #include "Array.h"
+#include "LinkedList.h"
 
 #include <iostream>
-
-//Includes---------------------------------------------------------------------
-
 
 //Types------------------------------------------------------------------------
 class StructureTests
@@ -14,12 +13,15 @@ public:
     StructureTests() = default;
     ~StructureTests() = default;
 
-    bool TestArray();
+    void TestArray();
     void PrintIntArrayValues(const Array<int>& arr) const;
+
+    void TestSingleLinkedList();
+    //void PrintSingleLinkedListIntElements(const SingleLinkedList<int>& list) const;
 };
 
 //Inline Implementation--------------------------------------------------------
-bool StructureTests::TestArray()
+void StructureTests::TestArray()
 {
     auto arr = Array<int>(6);
     printf("The size of arr is: %d", (int)arr.size());
@@ -40,7 +42,6 @@ bool StructureTests::TestArray()
 
     PrintIntArrayValues(arr);
 
-    return true;
 }
 
 inline void StructureTests::PrintIntArrayValues(const Array<int>& arr) const
@@ -50,6 +51,13 @@ inline void StructureTests::PrintIntArrayValues(const Array<int>& arr) const
         int elementValue = arr[i];
         printf("Value at index %d is %d\n", (int)i, elementValue);
     }
+}
+
+inline void StructureTests::TestSingleLinkedList()
+{
+
+    std::vector<int> numbers = { 12, 24, 36, 48, 60, 72, 94, 106 };
+
 }
 
 namespace StructTests

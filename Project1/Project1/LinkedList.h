@@ -1,150 +1,75 @@
 #pragma once
 
-
 //Includes---------------------------------------------------------------------
 
-//Types-------------
-template<typename T>
-class SinglyLinkedNode
+#include <memory>
+
+//Types------------------------------------------------------------------------
+
+//IntNode
+class IntNode
 {
 public:
-    explicit SinglyLinkedNode(T& data);
+    const int GetData() const;
+    void SetData(const int data);
 
-    T* GetData();
-    void SetData(const T& data);
-
-    SinglyLinkedNode<T>* GetNext();
-    void SetNext(const SinglyLinkedNode<T>& next);
+    std::shared_ptr<IntNode> GetNext();
+    void SetNext(std::shared_ptr<IntNode> node);
 
 private:
-    T _data;
-    std::unique_ptr<SinglyLinkedNode<T>> _next;
+    int _data;
+    std::shared_ptr<IntNode> _next;
 };
 
-template<typename T>
-class DoublyLinkedNode
+//IntLinkedList
+class IntLinkedList
 {
 public:
-    explicit DoublyLinkedNode(T& data);
+    explicit IntLinkedList() = default;
 
-    T* GetData();
-    void SetData(const T& data);
-
-    SinglyLinkedNode<T>* GetNext();
-    void SetNext(const SinglyLinkedNode<T>& next);
-    
-    SinglyLinkedNode<T>* GetPrev();
-    void SetPrev(const SinglyLinkedNode<T>& prev);
+    void Append(std::shared_ptr<IntNode>& node);
 
 private:
-    T _data;
-    std::unique_ptr<DoublyLinkedNode<T>> _next;
-    std::unique_ptr<DoublyLinkedNode<T>> _prev;
-};
-
-template<typename T>
-class SingleLinkedList
-{
-public:
-    explicit SingleLinkedList() = default;
-
-    void Insert(SinglyLinkedNode<T>& node);
-
-private:
-    std::unique_ptr<SinglyLinkedNode<T>> _head;
-};
-
-template<typename T>
-class DoublyLinkedList
-{
-public:
-    explicit DoublyLinkedList() = default;
-
-private:
-    std::unique_ptr<DoublyLinkedNode<T>> _head;
+    std::shared_ptr<IntNode> _head;
 };
 
 //Implementation---------------------------------------------------------------
 
-//SinglyLinkedNode
-template<typename T>
-inline SinglyLinkedNode<T>::SinglyLinkedNode(T& data)
-{
-    _data = data;
-}
-
-template<typename T>
-inline T* SinglyLinkedNode<T>::GetData()
+//IntNode
+inline const int IntNode::GetData() const
 {
     return _data;
 }
 
-template<typename T>
-inline void SinglyLinkedNode<T>::SetData(const T& data)
+inline void IntNode::SetData(const int data)
 {
     _data = data;
 }
 
-template<typename T>
-inline SinglyLinkedNode<T>* SinglyLinkedNode<T>::GetNext()
+inline std::shared_ptr<IntNode> IntNode::GetNext()
 {
     return _next;
 }
 
-template<typename T>
-inline void SinglyLinkedNode<T>::SetNext(const SinglyLinkedNode<T>& next)
+inline void IntNode::SetNext(std::shared_ptr<IntNode> node)
 {
-    _next = next;
+    _next = node;
 }
 
-//DoublyLinkedNode
-template<typename T>
-inline DoublyLinkedNode<T>::DoublyLinkedNode(T& data)
+inline void IntLinkedList::Append(std::shared_ptr<IntNode>& node)
 {
-    _data = data;
-}
-
-template<typename T>
-inline T* DoublyLinkedNode<T>::GetData()
-{
-    return _data;
-}
-
-template<typename T>
-inline void DoublyLinkedNode<T>::SetData(const T& data)
-{
-    _data = data;
-}
-
-template<typename T>
-inline SinglyLinkedNode<T>* DoublyLinkedNode<T>::GetNext()
-{
-    return _next;
-}
-
-template<typename T>
-inline void DoublyLinkedNode<T>::SetNext(const SinglyLinkedNode<T>& next)
-{
-    _next = next;
-}
-
-template<typename T>
-inline SinglyLinkedNode<T>* DoublyLinkedNode<T>::GetPrev()
-{
-    return _prev;
-}
-
-template<typename T>
-inline void DoublyLinkedNode<T>::SetPrev(const SinglyLinkedNode<T>& prev)
-{
-    _prev = prev;
-}
-
-template<typename T>
-inline void SingleLinkedList<T>::Insert(SinglyLinkedNode<T>& node)
-{
-    if (node != nullptr)
+    if (_head == nullptr)
     {
-        
+        _head = node;
+    }
+    else
+    {
+        auto current = _head;
+        while (current->GetNext() != nullptr)
+        {
+            current = current->GetNext();
+        }
+
+        current->SetNext(node);
     }
 }
