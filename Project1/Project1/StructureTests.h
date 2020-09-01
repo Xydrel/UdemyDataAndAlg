@@ -17,7 +17,7 @@ public:
     void PrintIntArrayValues(const Array<int>& arr) const;
 
     void TestSingleLinkedList();
-    //void PrintSingleLinkedListIntElements(const SingleLinkedList<int>& list) const;
+    void PrintIntLinkedListStatistics(const IntLinkedList& list) const;
 };
 
 //Inline Implementation--------------------------------------------------------
@@ -55,9 +55,26 @@ inline void StructureTests::PrintIntArrayValues(const Array<int>& arr) const
 
 inline void StructureTests::TestSingleLinkedList()
 {
+    auto intLinkedList = std::make_unique<IntLinkedList>();
 
     std::vector<int> numbers = { 12, 24, 36, 48, 60, 72, 94, 106 };
 
+    for (size_t i = 0; i < numbers.size(); i++)
+    {
+        auto newNode = std::make_shared<IntNode>();
+        newNode->SetData(numbers[i]);
+        intLinkedList->Append(newNode);
+    }
+
+    PrintIntLinkedListStatistics(*intLinkedList);
+
+}
+
+inline void StructureTests::PrintIntLinkedListStatistics(const IntLinkedList& list) const
+{
+    printf("\nList size is: %d", (long long)list.Size());
+
+    list.PrintDataValues();
 }
 
 namespace StructTests
@@ -66,5 +83,11 @@ namespace StructTests
     {
         auto structureTests = StructureTests();
         structureTests.TestArray();
+    }
+
+    void Run_IntLinkedListTests()
+    {
+        auto structureTests = StructureTests();
+        structureTests.TestSingleLinkedList();
     }
 }

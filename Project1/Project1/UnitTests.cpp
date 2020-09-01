@@ -98,6 +98,7 @@ void UnitTests::Run_EnabledTests()
 void UnitTests::Run_StructureTests()
 {
 	StructTests::Run_ArrayConstructionTest();
+	StructTests::Run_IntLinkedListTests();
 }
 
 void UnitTests::Run_ArithmeticTests()
