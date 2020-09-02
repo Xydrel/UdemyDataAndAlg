@@ -1,19 +1,21 @@
 #pragma once
 
+
 //Includes---------------------------------------------------------------------
 
 #include <memory>
 
 //Types------------------------------------------------------------------------
 
-//IntNode
-class IntNode
+//IntDoublyNode
+class IntDoublyNode
 {
 public:
-    using NodePtr = std::shared_ptr<IntNode>;
+    using NodePtr = std::shared_ptr<IntDoublyNode>;
 
-    explicit IntNode();
-    ~IntNode();
+    explicit IntDoublyNode();
+    ~IntDoublyNode();
+    //~IntDoublyNode() = default; //disabled for destructor testing
 
     const int GetData() const;
     void SetData(const int data);
@@ -21,22 +23,26 @@ public:
     NodePtr GetNext();
     void SetNext(NodePtr node);
 
+    NodePtr GetPrev();
+    void SetPrev(NodePtr node);
+
 private:
     int _data;
     NodePtr _next;
+    NodePtr _prev;
 };
 
-//IntLinkedList
-class IntLinkedList
+//IntDoublyLinkedList
+class IntDoublyLinkedList
 {
 public:
-    using ListNode = std::shared_ptr<IntNode>;
+    using ListNode = std::shared_ptr<IntDoublyNode>;
 
-    explicit IntLinkedList();
-    //~IntLinkedList() = default; //disabled for destructor testing
+    explicit IntDoublyLinkedList();
+    ~IntDoublyLinkedList() = default;
 
-    IntLinkedList(const IntLinkedList& rhs) = delete;
-    IntLinkedList operator=(const IntLinkedList& rhs) = delete;
+    IntDoublyLinkedList(const IntDoublyLinkedList& rhs) = delete;
+    IntDoublyLinkedList operator=(const IntDoublyLinkedList& rhs) = delete;
 
     size_t Size() const;
 
@@ -60,50 +66,61 @@ private:
 
 //Implementation---------------------------------------------------------------
 
-//IntNode
-inline IntNode::IntNode()
+//IntDoublyNode
+inline IntDoublyNode::IntDoublyNode()
 {
     _data = -1;
     _next = nullptr;
+    _prev = nullptr;
 }
 
-inline IntNode::~IntNode()
+inline IntDoublyNode::~IntDoublyNode()
 {
 }
 
-inline const int IntNode::GetData() const
+inline const int IntDoublyNode::GetData() const
 {
     return _data;
 }
 
-inline void IntNode::SetData(const int data)
+inline void IntDoublyNode::SetData(const int data)
 {
     _data = data;
 }
 
-inline IntNode::NodePtr IntNode::GetNext()
+inline IntDoublyNode::NodePtr IntDoublyNode::GetNext()
 {
     return _next;
 }
 
-inline void IntNode::SetNext(NodePtr node)
+inline void IntDoublyNode::SetNext(NodePtr node)
 {
     _next = node;
 }
 
-inline IntLinkedList::IntLinkedList()
+inline IntDoublyNode::NodePtr IntDoublyNode::GetPrev()
+{
+    return _prev;
+}
+
+inline void IntDoublyNode::SetPrev(NodePtr node)
+{
+    _prev = node;
+}
+
+inline IntDoublyLinkedList::IntDoublyLinkedList()
 {
     _head = nullptr;
     _last = nullptr;
 }
 
-inline size_t IntLinkedList::Size() const
+inline size_t IntDoublyLinkedList::Size() const
 {
     return _size;
 }
 
 
-inline void IntLinkedList::Append(ListNode& node)
+inline void IntDoublyLinkedList::Append(ListNode& node)
 {
     if (_head == nullptr)
     {
@@ -119,13 +136,14 @@ inline void IntLinkedList::Append(ListNode& node)
         }
 
         current->SetNext(node);
+        node->SetPrev(current);
         _last = node;
     }
 
     incrementSize();
 }
 
-inline void IntLinkedList::InsertAt(ListNode& node, size_t index)
+inline void IntDoublyLinkedList::InsertAt(ListNode& node, size_t index)
 {
     if (_head == nullptr)
     {
@@ -141,6 +159,7 @@ inline void IntLinkedList::InsertAt(ListNode& node, size_t index)
         {
             if (current == _last)
             {
+                node->SetPrev(current);
                 current->SetNext(node);
                 return;
             }
@@ -150,6 +169,7 @@ inline void IntLinkedList::InsertAt(ListNode& node, size_t index)
                 if (current->GetNext() != nullptr)
                 {
                     node->SetNext(current->GetNext());
+                    node->SetPrev(current);
                     current->SetNext(node);
 
                     return;
@@ -157,6 +177,7 @@ inline void IntLinkedList::InsertAt(ListNode& node, size_t index)
                 else
                 {
                     current->SetNext(node);
+                    node->SetPrev(current);
                     _last = node;
 
                     return;
@@ -170,7 +191,7 @@ inline void IntLinkedList::InsertAt(ListNode& node, size_t index)
     }
 }
 
-inline void IntLinkedList::Remove(size_t index)
+inline void IntDoublyLinkedList::Remove(size_t index)
 {
     if (_head != nullptr)
     {
@@ -181,13 +202,14 @@ inline void IntLinkedList::Remove(size_t index)
             {
                 auto oldNext = current->GetNext();
                 auto newNext = oldNext->GetNext();
-                
+
                 if (oldNext == _last)
                 {
                     _last = newNext;
                 }
 
                 current->SetNext(newNext);
+                newNext->SetPrev(current);
 
                 oldNext = nullptr;
 
@@ -201,7 +223,7 @@ inline void IntLinkedList::Remove(size_t index)
     }
 }
 
-inline IntLinkedList::ListNode IntLinkedList::Search(int key)
+inline IntDoublyLinkedList::ListNode IntDoublyLinkedList::Search(int key)
 {
     if (_head != nullptr)
     {
@@ -220,15 +242,15 @@ inline IntLinkedList::ListNode IntLinkedList::Search(int key)
     return nullptr;
 }
 
-inline void IntLinkedList::PrintDataValues() const
+inline void IntDoublyLinkedList::PrintDataValues() const
 {
     if (_head != nullptr)
     {
         auto current = _head;
         while (current != nullptr)
         {
-            printf("\nSingly Linked Node value is %d", current->GetData());
-            
+            printf("\nDoubly Linked Node value is %d", current->GetData());
+
             current = current->GetNext();
         }
 
@@ -236,12 +258,13 @@ inline void IntLinkedList::PrintDataValues() const
     }
 }
 
-inline void IntLinkedList::incrementSize()
+inline void IntDoublyLinkedList::incrementSize()
 {
     _size++;
 }
 
-inline void IntLinkedList::decrementSize()
+inline void IntDoublyLinkedList::decrementSize()
 {
     _size--;
 }
+

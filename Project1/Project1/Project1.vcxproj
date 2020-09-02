@@ -23,7 +23,7 @@
     <ProjectGuid>{5DC8708F-D6E4-464E-90DA-B79474272438}</ProjectGuid>
     <RootNamespace>Project1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Project1</ProjectName>
+    <ProjectName>DataAndAlg</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -86,6 +86,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -124,6 +127,8 @@
     <ClInclude Include="2DShapes.h" />
     <ClInclude Include="Array.h" />
     <ClInclude Include="Array2D.h" />
+    <ClInclude Include="CircularLinkedList.h" />
+    <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="LinkedList.h" />

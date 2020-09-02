@@ -3,6 +3,7 @@
 //Includes---------------------------------------------------------------------
 #include "Array.h"
 #include "LinkedList.h"
+#include "DoublyLinkedList.h"
 
 #include <iostream>
 
@@ -18,6 +19,9 @@ public:
 
     void TestSingleLinkedList();
     void PrintIntLinkedListStatistics(const IntLinkedList& list) const;
+
+    void TestDoublyLinkedList();
+    void PrintIntDoublyLinkedListStatistics(const IntDoublyLinkedList& list) const;
 };
 
 //Inline Implementation--------------------------------------------------------
@@ -96,6 +100,49 @@ inline void StructureTests::PrintIntLinkedListStatistics(const IntLinkedList& li
     list.PrintDataValues();
 }
 
+inline void StructureTests::TestDoublyLinkedList()
+{
+    auto intDoublyLinkedList = std::make_unique<IntDoublyLinkedList>();
+
+    std::vector<int> numbers = { 2, 4, 6, 8, 10, 12, 14, 16 };
+
+    for (size_t i = 0; i < numbers.size(); i++)
+    {
+        auto newNode = std::make_shared<IntDoublyNode>();
+        newNode->SetData(numbers[i]);
+        intDoublyLinkedList->Append(newNode);
+    }
+
+    PrintIntDoublyLinkedListStatistics(*intDoublyLinkedList);
+
+    intDoublyLinkedList->Remove(3); //remove 8
+
+    PrintIntDoublyLinkedListStatistics(*intDoublyLinkedList);
+
+    {
+        auto newNode = std::make_shared<IntDoublyNode>();
+        newNode->SetData(99);
+        intDoublyLinkedList->InsertAt(newNode, 5); //after 12
+
+        PrintIntDoublyLinkedListStatistics(*intDoublyLinkedList);
+    }
+
+    {
+        auto newNode = std::make_shared<IntDoublyNode>();
+        newNode->SetData(256);
+        intDoublyLinkedList->InsertAt(newNode, 10); //last element no exception
+
+        PrintIntDoublyLinkedListStatistics(*intDoublyLinkedList);
+    }
+}
+
+inline void StructureTests::PrintIntDoublyLinkedListStatistics(const IntDoublyLinkedList& list) const
+{
+    printf("\nList size is: %d", (int)list.Size());
+
+    list.PrintDataValues();
+}
+
 namespace StructTests
 {
     void Run_ArrayConstructionTest()
@@ -108,5 +155,11 @@ namespace StructTests
     {
         auto structureTests = StructureTests();
         structureTests.TestSingleLinkedList();
+    }
+
+    void Run_IntDoublyLinkedListTests()
+    {
+        auto structureTests = StructureTests();
+        structureTests.TestDoublyLinkedList();
     }
 }

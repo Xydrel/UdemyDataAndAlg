@@ -13,4 +13,6 @@
 #include "Array.h"
 #include "Array2D.h"
 #include "LinkedList.h"
+#include "DoublyLinkedList.h"
+#include "CircularLinkedList.h"
 #include "DynamicArray.h"

@@ -80,5 +80,11 @@
     <ClInclude Include="LinkedList.h">
       <Filter>Header Files\Structures</Filter>
     </ClInclude>
+    <ClInclude Include="CircularLinkedList.h">
+      <Filter>Header Files\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="DoublyLinkedList.h">
+      <Filter>Header Files\Structures</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

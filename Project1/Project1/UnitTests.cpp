@@ -99,6 +99,7 @@ void UnitTests::Run_StructureTests()
 {
 	StructTests::Run_ArrayConstructionTest();
 	StructTests::Run_IntLinkedListTests();
+	StructTests::Run_IntDoublyLinkedListTests();
 }
 
 void UnitTests::Run_ArithmeticTests()
