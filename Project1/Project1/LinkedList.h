@@ -28,13 +28,21 @@ private:
 class IntLinkedList
 {
 public:
+    using ListNode = std::shared_ptr<IntNode>;
+
     explicit IntLinkedList();
+    //~IntLinkedList() = default; //disabled for destructor testing
+
+    IntLinkedList(const IntLinkedList& rhs) = delete;
+    IntLinkedList operator=(const IntLinkedList& rhs) = delete;
 
     size_t Size() const;
 
-    void Append(std::shared_ptr<IntNode>& node);
-    void InsertAt(std::shared_ptr<IntNode>& node, size_t index);
+    void Append(ListNode& node);
+    void InsertAt(ListNode& node, size_t index);
     void Remove(size_t index);
+
+    ListNode Search(int key);
 
     void PrintDataValues() const;
 
@@ -43,8 +51,8 @@ private:
     void decrementSize();
 
 private:
-    std::shared_ptr<IntNode> _head;
-    std::shared_ptr<IntNode> _last;
+    ListNode _head;
+    ListNode _last;
     size_t _size = 0;
 };
 
@@ -93,7 +101,7 @@ inline size_t IntLinkedList::Size() const
 }
 
 
-inline void IntLinkedList::Append(std::shared_ptr<IntNode>& node)
+inline void IntLinkedList::Append(ListNode& node)
 {
     if (_head == nullptr)
     {
@@ -115,7 +123,7 @@ inline void IntLinkedList::Append(std::shared_ptr<IntNode>& node)
     incrementSize();
 }
 
-inline void IntLinkedList::InsertAt(std::shared_ptr<IntNode>& node, size_t index)
+inline void IntLinkedList::InsertAt(ListNode& node, size_t index)
 {
     if (_head == nullptr)
     {
@@ -189,6 +197,25 @@ inline void IntLinkedList::Remove(size_t index)
             current = current->GetNext();
         }
     }
+}
+
+inline IntLinkedList::ListNode IntLinkedList::Search(int key)
+{
+    if (_head != nullptr)
+    {
+        auto current = _head;
+        while (current != nullptr)
+        {
+            if (current->GetData() == key)
+            {
+                return current;
+            }
+
+            current = current->GetNext();
+        }
+    }
+
+    return nullptr;
 }
 
 inline void IntLinkedList::PrintDataValues() const
