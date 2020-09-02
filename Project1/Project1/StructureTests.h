@@ -4,6 +4,7 @@
 #include "Array.h"
 #include "LinkedList.h"
 #include "DoublyLinkedList.h"
+#include "CircularLinkedList.h"
 
 #include <iostream>
 
