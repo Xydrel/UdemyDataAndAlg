@@ -249,7 +249,9 @@ inline void IntDoublyLinkedList::PrintDataValues() const
         auto current = _head;
         while (current != nullptr)
         {
+            printf("\nDoubly Linked Node prev value is %d", (current->GetPrev() != nullptr ? current->GetPrev()->GetData() : -1));
             printf("\nDoubly Linked Node value is %d", current->GetData());
+            printf("\nDoubly Linked Node next value is %d", current->GetNext() != nullptr ? current->GetNext()->GetData() : -1);
 
             current = current->GetNext();
         }
