@@ -121,6 +121,12 @@
   <ItemGroup>
     <ClCompile Include="2DShapes.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Array.cpp" />
+    <ClCompile Include="Array2D.cpp" />
+    <ClCompile Include="CircularLinkedList.cpp" />
+    <ClCompile Include="DoublyLinkedList.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="StackLL.cpp" />
     <ClCompile Include="UnitTests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +142,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="Recursion.h" />
+    <ClInclude Include="StackLL.h" />
     <ClInclude Include="StructureTests.h" />
     <ClInclude Include="UnitTests.h" />
   </ItemGroup>

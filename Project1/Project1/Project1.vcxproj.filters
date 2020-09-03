@@ -42,6 +42,24 @@
     <ClCompile Include="UnitTests.cpp">
       <Filter>Header Files\UnitTests</Filter>
     </ClCompile>
+    <ClCompile Include="DoublyLinkedList.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularLinkedList.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="Array.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="Array2D.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="StackLL.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -85,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="DoublyLinkedList.h">
       <Filter>Header Files\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="StackLL.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,19 +18,5 @@ private:
     size_t _bredth;
 };
 
-//implement dynamic 2d vector
-
-
-//Implementation---------------------------------------------------------------
-
-template<typename T>
-inline Array2D<T>::Array2D(size_t depth, size_t bredth) :
-    _2dContainer(std::vector<std::vector<T>>()),
-    _depth(depth),
-    _bredth(bredth)
-{
-    _2dContainer.reserve(_bredth);
-}
-
 
 
