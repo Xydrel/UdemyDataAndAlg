@@ -108,6 +108,7 @@ inline void IntCircularNode::SetPrev(NodePtr node)
     _prev = node;
 }
 
+//IntCircularLinkedList
 inline IntCircularLinkedList::IntCircularLinkedList()
 {
     _head = nullptr;
@@ -119,25 +120,28 @@ inline size_t IntCircularLinkedList::Size() const
     return _size;
 }
 
-
 inline void IntCircularLinkedList::Append(ListNode& node)
 {
     if (_head == nullptr)
     {
         _head = node;
         _last = node;
+        _last->SetNext(_head);
     }
     else
     {
         auto current = _head;
         while (current->GetNext() != nullptr)
         {
+            if (current == _last) break;
+
             current = current->GetNext();
         }
 
         current->SetNext(node);
         node->SetPrev(current);
         _last = node;
+        _last->SetNext(_head);
     }
 
     incrementSize();
@@ -149,6 +153,7 @@ inline void IntCircularLinkedList::InsertAt(ListNode& node, size_t index)
     {
         _head = node;
         _last = node;
+        _last->SetNext(_head);
 
         incrementSize();
     }
@@ -161,6 +166,8 @@ inline void IntCircularLinkedList::InsertAt(ListNode& node, size_t index)
             {
                 node->SetPrev(current);
                 current->SetNext(node);
+                _last = node;
+                _last->SetNext(_head);
                 return;
             }
 
@@ -179,6 +186,7 @@ inline void IntCircularLinkedList::InsertAt(ListNode& node, size_t index)
                     current->SetNext(node);
                     node->SetPrev(current);
                     _last = node;
+                    _last->SetNext(_head);
 
                     return;
                 }
@@ -206,6 +214,7 @@ inline void IntCircularLinkedList::Remove(size_t index)
                 if (oldNext == _last)
                 {
                     _last = newNext;
+                    _last->SetNext(_head);
                 }
 
                 current->SetNext(newNext);
@@ -247,11 +256,13 @@ inline void IntCircularLinkedList::PrintDataValues() const
     if (_head != nullptr)
     {
         auto current = _head;
-        while (current != nullptr)
+        auto iteration = 0;
+        while (current != nullptr && iteration < 17)
         {
-            printf("\nDoubly Linked Node prev value is %d", (current->GetPrev() != nullptr ? current->GetPrev()->GetData() : -1));
-            printf("\nDoubly Linked Node value is %d", current->GetData());
-            printf("\nDoubly Linked Node next value is %d", current->GetNext() != nullptr ? current->GetNext()->GetData() : -1);
+            iteration++;
+            printf("\nCircular Linked Node prev value is %d", (current->GetPrev() != nullptr ? current->GetPrev()->GetData() : -1));
+            printf("\nCircular Linked Node value is %d", current->GetData());
+            printf("\nCircular Linked Node next value is %d", current->GetNext() != nullptr ? current->GetNext()->GetData() : -1);
 
             current = current->GetNext();
         }
@@ -269,8 +280,4 @@ inline void IntCircularLinkedList::decrementSize()
 {
     _size--;
 }
-
-
-
-//Implementation---------------------------------------------------------------
 

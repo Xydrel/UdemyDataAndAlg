@@ -23,6 +23,9 @@ public:
 
     void TestDoublyLinkedList();
     void PrintIntDoublyLinkedListStatistics(const IntDoublyLinkedList& list) const;
+
+    void TestCircularLinkedList();
+    void PrintIntCircularLinkedListStatistics(const IntCircularLinkedList& list) const;
 };
 
 //Inline Implementation--------------------------------------------------------
@@ -96,7 +99,7 @@ inline void StructureTests::TestSingleLinkedList()
 
 inline void StructureTests::PrintIntLinkedListStatistics(const IntLinkedList& list) const
 {
-    printf("\nList size is: %d", (int)list.Size());
+    printf("\nSingly linked list size is: %d", (int)list.Size());
 
     list.PrintDataValues();
 }
@@ -139,7 +142,50 @@ inline void StructureTests::TestDoublyLinkedList()
 
 inline void StructureTests::PrintIntDoublyLinkedListStatistics(const IntDoublyLinkedList& list) const
 {
-    printf("\nList size is: %d", (int)list.Size());
+    printf("\nDoubly linked list size is: %d", (int)list.Size());
+
+    list.PrintDataValues();
+}
+
+inline void StructureTests::TestCircularLinkedList()
+{
+    auto intCircularLinkedList = std::make_unique<IntCircularLinkedList>();
+
+    std::vector<int> numbers = { 2, 4, 6, 8, 10, 12, 14, 16 };
+
+    for (size_t i = 0; i < numbers.size(); i++)
+    {
+        auto newNode = std::make_shared<IntCircularNode>();
+        newNode->SetData(numbers[i]);
+        intCircularLinkedList->Append(newNode);
+    }
+
+    PrintIntCircularLinkedListStatistics(*intCircularLinkedList);
+
+    intCircularLinkedList->Remove(3); //remove 8
+
+    PrintIntCircularLinkedListStatistics(*intCircularLinkedList);
+
+    {
+        auto newNode = std::make_shared<IntCircularNode>();
+        newNode->SetData(99);
+        intCircularLinkedList->InsertAt(newNode, 5); //after 12
+
+        PrintIntCircularLinkedListStatistics(*intCircularLinkedList);
+    }
+
+    {
+        auto newNode = std::make_shared<IntCircularNode>();
+        newNode->SetData(256);
+        intCircularLinkedList->InsertAt(newNode, 10); //last element no exception
+
+        PrintIntCircularLinkedListStatistics(*intCircularLinkedList);
+    }
+}
+
+inline void StructureTests::PrintIntCircularLinkedListStatistics(const IntCircularLinkedList& list) const
+{
+    printf("\nCircular linked list size is: %d", (int)list.Size());
 
     list.PrintDataValues();
 }
@@ -162,5 +208,11 @@ namespace StructTests
     {
         auto structureTests = StructureTests();
         structureTests.TestDoublyLinkedList();
+    }
+
+    void Run_IntCircularLinkedListTests()
+    {
+        auto structureTests = StructureTests();
+        structureTests.TestCircularLinkedList();
     }
 }
