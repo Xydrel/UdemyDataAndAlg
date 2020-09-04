@@ -130,6 +130,14 @@ void IntDoublyLinkedList::InsertAt(ListNode& node, size_t index)
 
         incrementSize();
     }
+    else if (_head != nullptr && index == 0)
+    {
+        node->SetNext(_head);
+        _last = _head;
+        _head = node;
+
+        incrementSize();
+    }
     else
     {
         auto current = _head;
@@ -173,30 +181,41 @@ void IntDoublyLinkedList::RemoveAt(size_t index)
 {
     if (_head != nullptr)
     {
-        auto current = _head;
-        for (size_t i = 0; i < index; i++)
+        if (index == 0)
         {
-            if (i == index - 1)
-            {
-                auto oldNext = current->GetNext();
-                auto newNext = oldNext->GetNext();
+            auto newHead = _head->GetNext();
+            _head = nullptr;
+            _head = newHead;
 
-                if (oldNext == _last)
+            decrementSize();
+        }
+        else
+        {
+            auto current = _head;
+            for (size_t i = 0; i < index; i++)
+            {
+                if (i == index - 1)
                 {
-                    _last = newNext;
+                    auto oldNext = current->GetNext();
+                    auto newNext = oldNext->GetNext();
+
+                    if (oldNext == _last)
+                    {
+                        _last = newNext;
+                    }
+
+                    current->SetNext(newNext);
+                    newNext->SetPrev(current);
+
+                    oldNext = nullptr;
+
+                    decrementSize();
+
+                    return;
                 }
 
-                current->SetNext(newNext);
-                newNext->SetPrev(current);
-
-                oldNext = nullptr;
-
-                decrementSize();
-
-                return;
+                current = current->GetNext();
             }
-
-            current = current->GetNext();
         }
     }
 }

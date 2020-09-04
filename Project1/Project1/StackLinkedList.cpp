@@ -17,20 +17,20 @@ StackLinkedList::StackLinkedList() :
 
 void StackLinkedList::Push(IntDoublyNode::NodePtr node)
 {
-    _container->Append(node);
+    _container->Push(node);
 }
 
 IntDoublyNode::NodePtr StackLinkedList::Pop()
 {
-    auto node = _container->GetLast();
-    _container->PopBack();
+    auto node = _container->GetHead();
+    _container->Pop();
 
     return node;
 }
 
 const IntDoublyNode::NodePtr StackLinkedList::Top() const
 {
-    return _container->GetLast();
+    return _container->GetHead();
 }
 
 size_t StackLinkedList::Size() const
