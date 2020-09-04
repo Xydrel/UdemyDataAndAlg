@@ -46,9 +46,18 @@ public:
 
     size_t Size() const;
 
+    ListNode GetLast();
+    ListNode GetHead();
+
+    void Push(ListNode& node);
+    void Pop();
+
+    void PushBack(ListNode& node);
+    void PopBack();
+
     void Append(ListNode& node);
     void InsertAt(ListNode& node, size_t index);
-    void Remove(size_t index);
+    void RemoveAt(size_t index);
 
     ListNode Search(int key);
 

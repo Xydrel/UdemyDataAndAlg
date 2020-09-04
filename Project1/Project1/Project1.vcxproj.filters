@@ -57,7 +57,7 @@
     <ClCompile Include="Array2D.cpp">
       <Filter>Header Files\Structures</Filter>
     </ClCompile>
-    <ClCompile Include="StackLL.cpp">
+    <ClCompile Include="StackLinkedList.cpp">
       <Filter>Header Files\Structures</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClInclude Include="DoublyLinkedList.h">
       <Filter>Header Files\Structures</Filter>
     </ClInclude>
-    <ClInclude Include="StackLL.h">
+    <ClInclude Include="StackLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

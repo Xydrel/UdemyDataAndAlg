@@ -48,7 +48,7 @@ public:
 
     void Append(ListNode& node);
     void InsertAt(ListNode& node, size_t index);
-    void Remove(size_t index);
+    void RemoveAt(size_t index);
 
     ListNode Search(int key);
 

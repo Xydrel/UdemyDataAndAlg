@@ -139,7 +139,7 @@ void IntCircularLinkedList::InsertAt(ListNode& node, size_t index)
     }
 }
 
-void IntCircularLinkedList::Remove(size_t index)
+void IntCircularLinkedList::RemoveAt(size_t index)
 {
     if (_head != nullptr)
     {

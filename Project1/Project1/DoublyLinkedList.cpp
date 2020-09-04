@@ -60,6 +60,43 @@ size_t IntDoublyLinkedList::Size() const
     return _size;
 }
 
+IntDoublyLinkedList::ListNode IntDoublyLinkedList::GetLast()
+{
+    return _last;
+}
+
+IntDoublyLinkedList::ListNode IntDoublyLinkedList::GetHead()
+{
+    return _head;
+}
+
+void IntDoublyLinkedList::Push(ListNode& node)
+{
+    InsertAt(node, 0);
+}
+
+void IntDoublyLinkedList::Pop()
+{
+    RemoveAt(0);
+}
+
+void IntDoublyLinkedList::PushBack(ListNode& node)
+{
+    Append(node);
+}
+
+void IntDoublyLinkedList::PopBack()
+{
+    if (_last != nullptr)
+    {
+        auto newLast = _last->GetPrev();
+        newLast->SetNext(nullptr);
+        _last = nullptr;
+        _last = newLast;
+
+        decrementSize();
+    }
+}
 
 void IntDoublyLinkedList::Append(ListNode& node)
 {
@@ -132,7 +169,7 @@ void IntDoublyLinkedList::InsertAt(ListNode& node, size_t index)
     }
 }
 
-void IntDoublyLinkedList::Remove(size_t index)
+void IntDoublyLinkedList::RemoveAt(size_t index)
 {
     if (_head != nullptr)
     {

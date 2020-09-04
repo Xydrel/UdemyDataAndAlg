@@ -116,7 +116,7 @@ void IntLinkedList::InsertAt(ListNode& node, size_t index)
     }
 }
 
-void IntLinkedList::Remove(size_t index)
+void IntLinkedList::RemoveAt(size_t index)
 {
     if (_head != nullptr)
     {

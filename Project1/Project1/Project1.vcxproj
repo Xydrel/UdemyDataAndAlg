@@ -87,7 +87,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,6 +116,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -126,7 +127,7 @@
     <ClCompile Include="CircularLinkedList.cpp" />
     <ClCompile Include="DoublyLinkedList.cpp" />
     <ClCompile Include="LinkedList.cpp" />
-    <ClCompile Include="StackLL.cpp" />
+    <ClCompile Include="StackLinkedList.cpp" />
     <ClCompile Include="UnitTests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +143,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="Recursion.h" />
-    <ClInclude Include="StackLL.h" />
+    <ClInclude Include="StackLinkedList.h" />
     <ClInclude Include="StructureTests.h" />
     <ClInclude Include="UnitTests.h" />
   </ItemGroup>

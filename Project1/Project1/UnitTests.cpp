@@ -101,6 +101,7 @@ void UnitTests::Run_StructureTests()
 	StructTests::Run_IntLinkedListTests();
 	StructTests::Run_IntDoublyLinkedListTests();
 	StructTests::Run_IntCircularLinkedListTests();
+	StructTests::Run_IntStackLinkedListTests();
 }
 
 void UnitTests::Run_ArithmeticTests()

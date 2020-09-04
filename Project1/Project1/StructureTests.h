@@ -2,9 +2,10 @@
 
 //Includes---------------------------------------------------------------------
 #include "Array.h"
-#include "LinkedList.h"
-#include "DoublyLinkedList.h"
 #include "CircularLinkedList.h"
+#include "DoublyLinkedList.h"
+#include "LinkedList.h"
+#include "StackLinkedList.h"
 
 #include <iostream>
 
@@ -26,6 +27,9 @@ public:
 
     void TestCircularLinkedList();
     void PrintIntCircularLinkedListStatistics(const IntCircularLinkedList& list) const;
+
+    void TestStackLinkedList();
+    void PrintIntStackLinkedList(const StackLinkedList& stack) const;
 };
 
 //Inline Implementation--------------------------------------------------------
@@ -80,7 +84,7 @@ inline void StructureTests::TestSingleLinkedList()
 
     PrintIntLinkedListStatistics(*intLinkedList);
 
-    intLinkedList->Remove(3); //remove 48
+    intLinkedList->RemoveAt(3); //remove 48
 
     PrintIntLinkedListStatistics(*intLinkedList);
 
@@ -123,7 +127,7 @@ inline void StructureTests::TestDoublyLinkedList()
 
     PrintIntDoublyLinkedListStatistics(*intDoublyLinkedList);
 
-    intDoublyLinkedList->Remove(3); //remove 8
+    intDoublyLinkedList->RemoveAt(3); //remove 8
 
     PrintIntDoublyLinkedListStatistics(*intDoublyLinkedList);
 
@@ -166,7 +170,7 @@ inline void StructureTests::TestCircularLinkedList()
 
     PrintIntCircularLinkedListStatistics(*intCircularLinkedList);
 
-    intCircularLinkedList->Remove(3); //remove 8
+    intCircularLinkedList->RemoveAt(3); //remove 8
 
     PrintIntCircularLinkedListStatistics(*intCircularLinkedList);
 
@@ -194,6 +198,64 @@ inline void StructureTests::PrintIntCircularLinkedListStatistics(const IntCircul
     list.PrintDataValues();
 }
 
+inline void StructureTests::TestStackLinkedList()
+{
+    auto intStackLinkedLIst = std::make_unique<StackLinkedList>();
+    if (!intStackLinkedLIst->IsValid())
+    {
+        return;
+    }
+
+    std::vector<int> numbers = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+
+    for (size_t i = 0; i < numbers.size(); i++)
+    {
+        auto newNode = std::make_shared<IntDoublyNode>();
+        newNode->SetData(numbers[i]);
+        intStackLinkedLIst->Push(newNode);
+    }
+
+    PrintIntStackLinkedList(*intStackLinkedLIst);
+
+    {
+        auto top = intStackLinkedLIst->Pop();
+
+        printf("popped top value %d", top->GetData());
+    }
+
+    PrintIntStackLinkedList(*intStackLinkedLIst);
+
+    {
+        auto newNode = std::make_shared<IntDoublyNode>();
+        newNode->SetData(99);
+        intStackLinkedLIst->Push(newNode);
+
+        PrintIntStackLinkedList(*intStackLinkedLIst);
+    }
+
+    {
+        auto newNode = std::make_shared<IntDoublyNode>();
+        newNode->SetData(1024);
+        intStackLinkedLIst->Push(newNode); //last element no exception
+
+        PrintIntStackLinkedList(*intStackLinkedLIst);
+    }
+
+    {
+        auto top = intStackLinkedLIst->Pop();
+
+        printf("popped top value %d", top->GetData());
+
+    }
+
+    PrintIntStackLinkedList(*intStackLinkedLIst);
+}
+
+inline void StructureTests::PrintIntStackLinkedList(const StackLinkedList& stack) const
+{
+    stack.PrintElementValues();
+}
+
 namespace StructTests
 {
     void Run_ArrayConstructionTest()
@@ -218,5 +280,11 @@ namespace StructTests
     {
         auto structureTests = StructureTests();
         structureTests.TestCircularLinkedList();
+    }
+
+    void Run_IntStackLinkedListTests()
+    {
+        auto structureTests = StructureTests();
+        structureTests.TestStackLinkedList();
     }
 }
