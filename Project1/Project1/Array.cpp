@@ -66,7 +66,7 @@ inline void Array<T>::PopBack()
 }
 
 template<typename T>
-inline T& Array<T>::search(T rhs)
+inline T& Array<T>::Search(T rhs)
 {
     auto result = T();
     for (size_t i = 0; i < _container.size(); i++)

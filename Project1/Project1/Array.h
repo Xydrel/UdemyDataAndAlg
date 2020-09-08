@@ -23,7 +23,7 @@ public:
     void PushBack(T element);
     void PopBack();
 
-    T& search(T rhs);
+    T& Search(T rhs);
 
 private:
     std::vector<T> _container;
