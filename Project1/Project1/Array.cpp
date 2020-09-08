@@ -3,14 +3,11 @@
 //Includes---------------------------------------------------------------------
 #include "Array.h"
 
-#include <vector>
-
 //Implementation--------------------------------------------------------
 template<typename T>
 inline Array<T>::Array(size_t len) :
     _container(std::vector<T>()),
-    _maxSize(len),
-    _count(0)
+    _maxSize(len)
 {
     _container.reserve(len);
 }
@@ -50,7 +47,7 @@ void Array<T>::Pop()
 template<typename T>
 inline void Array<T>::PushBack(T element)
 {
-    if (_count <= _maxSize)
+    if (Size() <= _maxSize)
     {
         _container.push_back(element);
     }
@@ -59,10 +56,7 @@ inline void Array<T>::PushBack(T element)
 template<typename T>
 inline void Array<T>::PopBack()
 {
-    if (_count != 0)
-    {
-        _container.pop_back();
-    }
+    _container.pop_back();
 }
 
 template<typename T>

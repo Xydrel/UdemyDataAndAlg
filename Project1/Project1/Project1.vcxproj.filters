@@ -60,6 +60,9 @@
     <ClCompile Include="StackLinkedList.cpp">
       <Filter>Header Files\Structures</Filter>
     </ClCompile>
+    <ClCompile Include="StackArray.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="CachedResult.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StackArray.h">
+      <Filter>Header Files\Structures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

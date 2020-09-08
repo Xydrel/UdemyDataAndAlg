@@ -9,6 +9,7 @@ class Array
 {
 public:
     explicit Array<T>(size_t len);
+    ~Array<T>() {}
 
     size_t Size() const;
     T& At(const size_t index);
@@ -28,5 +29,4 @@ public:
 private:
     std::vector<T> _container;
     size_t _maxSize;
-    size_t _count;
 };
