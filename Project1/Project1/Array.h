@@ -10,17 +10,18 @@ class Array
 public:
     explicit Array<T>(size_t len);
 
-    size_t size() const;
-    size_t count() const;
-    T& at(const size_t index);
+    size_t Size() const;
+    T& At(const size_t index);
 
     const T& operator[] (const size_t index) const { return _container[index]; }
 
-    void insertAt(T element, size_t index);
+    void InsertAt(T element, size_t index);
 
-    void push_back(T element);
+    void Push(T element);
+    void Pop();
 
-    void pop_back();
+    void PushBack(T element);
+    void PopBack();
 
     T& search(T rhs);
 

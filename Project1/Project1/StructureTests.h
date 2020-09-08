@@ -62,7 +62,7 @@ void StructureTests::TestArray()
 
 inline void StructureTests::PrintIntArrayValues(const Array<int>& arr) const
 {
-    for (size_t i = 0; i < arr.size(); ++i)
+    for (size_t i = 0; i < arr.Size(); ++i)
     {
         int elementValue = arr[i];
         printf("Value at index %d is %d\n", (int)i, elementValue);

@@ -16,19 +16,13 @@ inline Array<T>::Array(size_t len) :
 }
 
 template<typename T>
-inline size_t Array<T>::size() const
+inline size_t Array<T>::Size() const
 {
     return _container.size();
 }
 
 template<typename T>
-inline size_t Array<T>::count() const
-{
-    return _count;
-}
-
-template<typename T>
-inline T& Array<T>::at(const size_t index)
+inline T& Array<T>::At(const size_t index)
 {
     auto result = _container[index];
     return result;
@@ -36,29 +30,38 @@ inline T& Array<T>::at(const size_t index)
 
 
 template<typename T>
-inline void Array<T>::insertAt(T element, size_t index)
+inline void Array<T>::InsertAt(T element, size_t index)
 {
     _container[index] = element;
-    _count += 1;
 }
 
 template<typename T>
-inline void Array<T>::push_back(T element)
+void Array<T>::Push(T element)
+{
+    _container.insert(element, 0);
+}
+
+template<typename T>
+void Array<T>::Pop()
+{
+    _container.erase(_container.begin());
+}
+
+template<typename T>
+inline void Array<T>::PushBack(T element)
 {
     if (_count <= _maxSize)
     {
-        _count += 1;
         _container.push_back(element);
     }
 }
 
 template<typename T>
-inline void Array<T>::pop_back()
+inline void Array<T>::PopBack()
 {
     if (_count != 0)
     {
         _container.pop_back();
-        _count -= 1;
     }
 }
 
