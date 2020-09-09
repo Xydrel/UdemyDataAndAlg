@@ -6,9 +6,8 @@
 //Implementation---------------------------------------------------------------
 
 IntQueueArray::IntQueueArray() :
-    _front(-1),
-    _rear(-1),
-    _size(0)
+    _front(0),
+    _rear(0)
 {
 }
 
@@ -23,7 +22,6 @@ bool IntQueueArray::Queue(int value)
     else
     {
         _container[++_rear] = value;
-        ++_size;
 
         return true;
     }
@@ -32,8 +30,11 @@ bool IntQueueArray::Queue(int value)
 int IntQueueArray::Dequeue()
 {
     auto value = _container[_front];
-    _container[_front++] = -1;
-    --_size;
+    for (auto i = _front; i < _rear; i++)
+    {
+        _container[i] = _container[i + 1];
+    }
+    --_rear;
 
     return value;
 }
@@ -50,17 +51,17 @@ const size_t IntQueueArray::Rear() const
 
 size_t IntQueueArray::Size() const
 {
-    return _size;
+    return _rear;
 }
 
 bool IntQueueArray::IsEmpty() const
 {
-    return _size == 0;
+    return _rear == 0;
 }
 
 bool IntQueueArray::IsFull() const
 {
-    return _size == MAX;
+    return _rear == MAX;
 }
 
 void IntQueueArray::PrintElementValues() const

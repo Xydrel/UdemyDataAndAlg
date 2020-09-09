@@ -29,6 +29,5 @@ private:
     int _container[MAX] = {-1};
     size_t _front;
     size_t _rear;
-    size_t _size;
 };
 
