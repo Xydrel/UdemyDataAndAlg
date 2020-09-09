@@ -16,3 +16,4 @@
 #include "DoublyLinkedList.h"
 #include "CircularLinkedList.h"
 #include "DynamicArray.h"
+#include "BinaryTree.h"
