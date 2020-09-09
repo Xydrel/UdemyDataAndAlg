@@ -127,6 +127,7 @@
     <ClCompile Include="CircularLinkedList.cpp" />
     <ClCompile Include="DoublyLinkedList.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="QueueLinkedList.cpp" />
     <ClCompile Include="StackArray.cpp" />
     <ClCompile Include="StackLinkedList.cpp" />
     <ClCompile Include="UnitTests.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="MathTests.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="QueueLinkedList.h" />
     <ClInclude Include="Recursion.h" />
     <ClInclude Include="StackArray.h" />
     <ClInclude Include="StackLinkedList.h" />
