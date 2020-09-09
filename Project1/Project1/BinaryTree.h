@@ -10,6 +10,7 @@ public:
     using IntBTNode = std::shared_ptr<IntBTreeNode>;
 
     explicit IntBTreeNode();
+    explicit IntBTreeNode(const int value);
 
     int GetData() const;
     void SetData(const int value);
@@ -21,7 +22,6 @@ public:
     void SetRightNode(const IntBTNode node);
 
 private:
-
     int _data;
     std::shared_ptr<IntBTreeNode> _leftNode;
     std::shared_ptr<IntBTreeNode> _rightNode;
@@ -34,7 +34,15 @@ class IntBinaryTree final
 public:
     explicit IntBinaryTree();
 
-    IntBTNode Search(const IntBTNode root, int key);
+    void InsertNode(const int value);
+
+    IntBTNode Search(const int value);
+
+    void PrintTreeValues();
+
+private:
+    IntBTNode insertNode(IntBTNode node, const int value);
+    IntBTNode search(const IntBTNode root, int key);
 
 private:
     std::shared_ptr<IntBTreeNode> _root;
