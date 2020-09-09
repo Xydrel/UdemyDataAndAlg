@@ -9,10 +9,12 @@ class QueueLinkedList
 public:
     explicit QueueLinkedList();
 
-    void Push(IntDoublyNode::NodePtr node);
-    IntDoublyNode::NodePtr Pop();
+    void Queue(IntDoublyNode::NodePtr node);
+    IntDoublyNode::NodePtr Dequeue();
 
     const IntDoublyNode::NodePtr First() const;
+    const IntDoublyNode::NodePtr Rear() const;
+
     size_t Size() const;
 
     bool IsEmpty() const;

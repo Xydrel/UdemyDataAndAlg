@@ -15,20 +15,25 @@ QueueLinkedList::QueueLinkedList() :
     }
 }
 
-void QueueLinkedList::Push(IntDoublyNode::NodePtr node)
+void QueueLinkedList::Queue(IntDoublyNode::NodePtr node)
 {
-    _container->Push(node);
+    _container->PushBack(node);
 }
 
-IntDoublyNode::NodePtr QueueLinkedList::Pop()
+IntDoublyNode::NodePtr QueueLinkedList::Dequeue()
 {
-    auto node = _container->GetLast();
-    _container->PopBack();
+    auto node = _container->GetHead();
+    _container->Pop();
 
     return node;
 }
 
 const IntDoublyNode::NodePtr QueueLinkedList::First() const
+{
+    return _container->GetHead();
+}
+
+const IntDoublyNode::NodePtr QueueLinkedList::Rear() const
 {
     return _container->GetLast();
 }

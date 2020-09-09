@@ -60,14 +60,14 @@ size_t IntDoublyLinkedList::Size() const
     return _size;
 }
 
-IntDoublyLinkedList::ListNode IntDoublyLinkedList::GetLast()
-{
-    return _last;
-}
-
 IntDoublyLinkedList::ListNode IntDoublyLinkedList::GetHead()
 {
     return _head;
+}
+
+IntDoublyLinkedList::ListNode IntDoublyLinkedList::GetLast()
+{
+    return _last;
 }
 
 void IntDoublyLinkedList::Push(ListNode& node)

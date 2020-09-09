@@ -46,8 +46,8 @@ public:
 
     size_t Size() const;
 
-    ListNode GetLast();
     ListNode GetHead();
+    ListNode GetLast();
 
     void Push(ListNode& node);
     void Pop();
