@@ -66,6 +66,9 @@
     <ClCompile Include="QueueLinkedList.cpp">
       <Filter>Header Files\Structures</Filter>
     </ClCompile>
+    <ClCompile Include="QueueArray.cpp">
+      <Filter>Header Files\Structures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files\Structures</Filter>
     </ClInclude>
     <ClInclude Include="QueueLinkedList.h">
+      <Filter>Header Files\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="QueueArray.h">
       <Filter>Header Files\Structures</Filter>
     </ClInclude>
   </ItemGroup>

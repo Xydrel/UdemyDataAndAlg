@@ -6,6 +6,9 @@
 #include "DoublyLinkedList.h"
 #include "LinkedList.h"
 #include "StackLinkedList.h"
+#include "StackArray.h"
+#include "QueueLinkedList.h"
+#include "QueueArray.h"
 
 #include <iostream>
 

@@ -1,22 +1,23 @@
 #pragma once
 
 //Includes---------------------------------------------------------------------
-#include "Array.h"
-
 #include <memory>
 
 //Types------------------------------------------------------------------------
-class IntStackArray
+
+class IntQueueArray
 {
     static const auto MAX = 100;
 
 public:
-    explicit IntStackArray();
+    explicit IntQueueArray();
 
-    bool Push(int value);
-    int Pop();
+    bool Queue(int value);
+    int Dequeue();
 
-    const size_t Top() const;
+    const size_t Front() const;
+    const size_t Rear() const;
+
     size_t Size() const;
 
     bool IsEmpty() const;
@@ -26,6 +27,8 @@ public:
 
 private:
     int _container[MAX] = {-1};
-    size_t _top;
+    size_t _front;
+    size_t _rear;
+    size_t _size;
 };
 
